@@ -4,6 +4,8 @@
 
 #include "stdafx.h"
 #include "RSSPCryptool.h"
+#include "Manage.h"
+#include "SensitivityTest.h"
 #include "RSSPCryptoolDlg.h"
 
 #ifdef _DEBUG

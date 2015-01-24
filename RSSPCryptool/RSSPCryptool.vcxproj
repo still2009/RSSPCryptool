@@ -102,15 +102,19 @@
     <ResourceCompile Include="RSSPCryptool.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\View\Manage.h" />
     <ClInclude Include="Component\View\RSSPCryptool.h" />
     <ClInclude Include="Component\View\RSSPCryptoolDlg.h" />
+    <ClInclude Include="Component\View\SensitivityTest.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Component\View\Manage.cpp" />
     <ClCompile Include="Component\View\RSSPCryptool.cpp" />
     <ClCompile Include="Component\View\RSSPCryptoolDlg.cpp" />
+    <ClCompile Include="Component\View\SensitivityTest.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>

@@ -66,6 +66,12 @@
     <ClInclude Include="resource.h">
       <Filter>AutoGen</Filter>
     </ClInclude>
+    <ClInclude Include="Component\View\Manage.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\SensitivityTest.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\RSSPCryptool.cpp">
@@ -76,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>AutoGen</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\Manage.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\SensitivityTest.cpp">
+      <Filter>Component\View</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

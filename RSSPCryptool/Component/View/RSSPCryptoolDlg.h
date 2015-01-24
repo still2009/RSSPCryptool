@@ -2,8 +2,11 @@
 // RSSPCryptoolDlg.h : 头文件
 //
 
-#pragma once
 
+#pragma once
+#include "afxcmn.h"
+#include "Manage.h"
+#include "SensitivityTest.h"
 
 // CRSSPCryptoolDlg 对话框
 class CRSSPCryptoolDlg : public CDialogEx
@@ -11,13 +14,15 @@ class CRSSPCryptoolDlg : public CDialogEx
 // 构造
 public:
 	CRSSPCryptoolDlg(CWnd* pParent = NULL);	// 标准构造函数
+	Manage m_manageDlg;
+	SensitivityTest m_sensitivityTestDlg;
 
 // 对话框数据
 	enum { IDD = IDD_RSSPCRYPTOOL_DIALOG };
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持
-
+	
 
 // 实现
 protected:
@@ -29,4 +34,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CTabCtrl m_tab;
 };

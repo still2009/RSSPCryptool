@@ -7,6 +7,8 @@
 #include "RSSPCryptoolDlg.h"
 #include "afxdialogex.h"
 
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -57,6 +59,7 @@ CRSSPCryptoolDlg::CRSSPCryptoolDlg(CWnd* pParent /*=NULL*/)
 void CRSSPCryptoolDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_TAB, m_tab);
 }
 
 BEGIN_MESSAGE_MAP(CRSSPCryptoolDlg, CDialogEx)
@@ -97,7 +100,23 @@ BOOL CRSSPCryptoolDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	// TODO: 在此添加额外的初始化代码
+	CRect tabRect;
+	
+
+	m_tab.InsertItem(0, _T("算法管理"));    
+	m_tab.InsertItem(1, _T("雪崩效应测试")); 
+	m_manageDlg.Create(IDD_MANAGE,&m_tab);
+	m_sensitivityTestDlg.Create(IDD_SENSITIVITY_TEST,&m_tab);
+
+	m_tab.GetClientRect(&tabRect);
+
+	tabRect.left += 1;
+	tabRect.right -= 1;
+	tabRect.top += 22;
+	tabRect.bottom -= 1;
+	 
+	m_manageDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
+	m_sensitivityTestDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -151,3 +170,16 @@ HCURSOR CRSSPCryptoolDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+/*void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	int num=m_tab.GetCurSel();
+        switch(num)
+        {
+        case 0:m_manageDlg.ShowWindow(SW_SHOW);
+               m_sensitivityTestDlg.ShowWindow(SW_HIDE);
+               break;
+        case 1:m_manageDlg.ShowWindow(SW_HIDE);
+               m_sensitivityTestDlg.ShowWindow(SW_SHOW);
+        }
+    *pResult = 0;
+}*/
