@@ -72,6 +72,9 @@
     <ClInclude Include="Component\View\SensitivityTest.h">
       <Filter>Component\View\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Component\View\NistTest.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\RSSPCryptool.cpp">
@@ -87,6 +90,9 @@
       <Filter>Component\View</Filter>
     </ClCompile>
     <ClCompile Include="Component\View\SensitivityTest.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\NistTest.cpp">
       <Filter>Component\View</Filter>
     </ClCompile>
   </ItemGroup>

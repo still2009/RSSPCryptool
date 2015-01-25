@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component\View\Manage.h" />
+    <ClInclude Include="Component\View\NistTest.h" />
     <ClInclude Include="Component\View\RSSPCryptool.h" />
     <ClInclude Include="Component\View\RSSPCryptoolDlg.h" />
     <ClInclude Include="Component\View\SensitivityTest.h" />
@@ -112,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\Manage.cpp" />
+    <ClCompile Include="Component\View\NistTest.cpp" />
     <ClCompile Include="Component\View\RSSPCryptool.cpp" />
     <ClCompile Include="Component\View\RSSPCryptoolDlg.cpp" />
     <ClCompile Include="Component\View\SensitivityTest.cpp" />
