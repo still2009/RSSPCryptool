@@ -67,6 +67,7 @@ BEGIN_MESSAGE_MAP(CRSSPCryptoolDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CRSSPCryptoolDlg::OnTcnSelchangeTab)
+	ON_COMMAND(ID_ABOUT_MENU, &CRSSPCryptoolDlg::OnAboutMenu)
 END_MESSAGE_MAP()
 
 
@@ -195,4 +196,12 @@ void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
 		m_nistTestDlg.ShowWindow(SW_SHOW);
 		break;
 	}
+}
+
+
+void CRSSPCryptoolDlg::OnAboutMenu()
+{
+	//显示”关于“对话框
+	CAboutDlg m_aboutDlg;
+	m_aboutDlg.DoModal();
 }
