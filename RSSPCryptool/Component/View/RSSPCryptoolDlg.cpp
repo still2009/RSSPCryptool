@@ -66,6 +66,7 @@ BEGIN_MESSAGE_MAP(CRSSPCryptoolDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CRSSPCryptoolDlg::OnTcnSelchangeTab)
 END_MESSAGE_MAP()
 
 
@@ -99,24 +100,27 @@ BOOL CRSSPCryptoolDlg::OnInitDialog()
 	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
-
-	CRect tabRect;
 	
+	//初始化Tab Control控件
+	m_tab.InsertItem(0, _T("算法管理"));
+	m_tab.InsertItem(1, _T("雪崩效应测试"));
+	m_tab.InsertItem(2, _T("NIST随机性测试"));
 
-	m_tab.InsertItem(0, _T("算法管理"));    
-	m_tab.InsertItem(1, _T("雪崩效应测试")); 
 	m_manageDlg.Create(IDD_MANAGE,&m_tab);
 	m_sensitivityTestDlg.Create(IDD_SENSITIVITY_TEST,&m_tab);
+	m_nistTestDlg.Create(IDD_NIST_TEST,&m_tab);
 
+	CRect tabRect;
 	m_tab.GetClientRect(&tabRect);
-
-	tabRect.left += 1;
-	tabRect.right -= 1;
 	tabRect.top += 22;
-	tabRect.bottom -= 1;
-	 
-	m_manageDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
-	m_sensitivityTestDlg.SetWindowPos(NULL, tabRect.left, tabRect.top, tabRect.Width(), tabRect.Height(), SWP_SHOWWINDOW);
+	
+	m_manageDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
+	m_sensitivityTestDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
+	m_nistTestDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
+
+	m_manageDlg.ShowWindow(SW_SHOW);
+	m_sensitivityTestDlg.ShowWindow(SW_HIDE);
+	m_nistTestDlg.ShowWindow(SW_HIDE);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -170,16 +174,25 @@ HCURSOR CRSSPCryptoolDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-/*void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
+void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
 {
-	int num=m_tab.GetCurSel();
-        switch(num)
-        {
-        case 0:m_manageDlg.ShowWindow(SW_SHOW);
-               m_sensitivityTestDlg.ShowWindow(SW_HIDE);
-               break;
-        case 1:m_manageDlg.ShowWindow(SW_HIDE);
-               m_sensitivityTestDlg.ShowWindow(SW_SHOW);
-        }
-    *pResult = 0;
-}*/
+	//Tab按钮切换时的操作
+	*pResult = 0;
+	switch(m_tab.GetCurSel()){
+	case 0:
+		m_manageDlg.ShowWindow(SW_SHOW);
+		m_sensitivityTestDlg.ShowWindow(SW_HIDE);
+		m_nistTestDlg.ShowWindow(SW_HIDE);
+		break;
+	case 1:
+		m_manageDlg.ShowWindow(SW_HIDE);
+		m_sensitivityTestDlg.ShowWindow(SW_SHOW);
+		m_nistTestDlg.ShowWindow(SW_HIDE);
+		break;
+	case 2:
+		m_manageDlg.ShowWindow(SW_HIDE);
+		m_sensitivityTestDlg.ShowWindow(SW_HIDE);
+		m_nistTestDlg.ShowWindow(SW_SHOW);
+		break;
+	}
+}

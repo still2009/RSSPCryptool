@@ -7,6 +7,7 @@
 #include "afxcmn.h"
 #include "Manage.h"
 #include "SensitivityTest.h"
+#include "NistTest.h"
 
 // CRSSPCryptoolDlg 对话框
 class CRSSPCryptoolDlg : public CDialogEx
@@ -16,6 +17,7 @@ public:
 	CRSSPCryptoolDlg(CWnd* pParent = NULL);	// 标准构造函数
 	Manage m_manageDlg;
 	SensitivityTest m_sensitivityTestDlg;
+	NistTest m_nistTestDlg;
 
 // 对话框数据
 	enum { IDD = IDD_RSSPCRYPTOOL_DIALOG };
@@ -36,4 +38,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CTabCtrl m_tab;
+	afx_msg void OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult);
 };
