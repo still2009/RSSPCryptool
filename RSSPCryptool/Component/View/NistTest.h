@@ -30,7 +30,6 @@ public:
 	int m_linearComplexitySequenceLength;
 	int m_serialBlockLength;
 	virtual BOOL OnInitDialog();
-<<<<<<< HEAD
 	afx_msg void OnBnClickedRngGenerate();
 	CButton m_StartEvaluation;
 	CButton m_ShowResult;
@@ -53,6 +52,4 @@ public:
 	void ChooseTest();
 	void SetParameter();
 	void StartProcess();
-=======
->>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
 };
