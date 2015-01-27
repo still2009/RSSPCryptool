@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Component">
+      <UniqueIdentifier>{42d39169-7416-476b-b0a8-87918a7266c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AutoGen">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Component\DllApi">
+      <UniqueIdentifier>{d195ffb0-3906-4246-8d24-f029fc413a01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Evaluation">
+      <UniqueIdentifier>{2d5c2a5a-6319-4fa8-82d3-ba60b02fe77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Logic">
+      <UniqueIdentifier>{974e3e30-afd2-44d3-bc3a-e99c061b042d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\View">
+      <UniqueIdentifier>{afdc34bd-2c8e-47a1-ba45-acf8d0c4b08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\View\Headers">
+      <UniqueIdentifier>{e505e677-6f39-431a-b51c-6f8384d3247d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Logic\Headers">
+      <UniqueIdentifier>{16449986-26a0-42f3-bbe2-926455f63702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Evaluation\Headers">
+      <UniqueIdentifier>{795633a6-c0f4-4802-ae4e-862502d926a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\DllApi\Headers">
+      <UniqueIdentifier>{4935aec0-87db-4090-b683-035a4136c5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\RSSPCryptool.rc2">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="res\RSSPCryptool.ico">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RSSPCryptool.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Component\View\RSSPCryptool.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\RSSPCryptoolDlg.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>AutoGen</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>AutoGen</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>AutoGen</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\Manage.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\SensitivityTest.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\NistTest.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\cephes.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\config.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\decls.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\defs.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\erf.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\externs.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\generators.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\genutils.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\matrix.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\stat_fncs.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\utilities.h">
+      <Filter>Component\Evaluation\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Evaluation\Nist_access.h">
+      <Filter>Component\Logic\Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Component\View\RSSPCryptool.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\RSSPCryptoolDlg.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>AutoGen</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\Manage.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\SensitivityTest.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\NistTest.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\approximateEntropy.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\blockFrequency.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\cephes.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\cusum.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\dfft.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\discreteFourierTransform.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\erf.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\frequency.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\generators.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\genutils.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\linearComplexity.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\longestRunOfOnes.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\matrix.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\nonOverlappingTemplateMatchings.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\overlappingTemplateMatchings.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\randomExcursions.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\randomExcursionsVariant.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\rank.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\runs.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\serial.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\universal.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\utilities.cpp">
+      <Filter>Component\Evaluation</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Evaluation\Nist_access.cpp">
+      <Filter>Component\Logic</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+﻿#过滤数据库文件
+*.sdf
+*.opensdf
+
+
+#过滤文件夹
+Debug/
+RSSPCryptool/Debug/
+Release/
+ipch/
