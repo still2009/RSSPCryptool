@@ -5,12 +5,16 @@
 #include "RSSPCryptool.h"
 #include "NistTest.h"
 #include "afxdialogex.h"
+<<<<<<< HEAD
 #include "Component\Evaluation\externs.h"
 #include "Component\Evaluation\utilities.h"
 #include "Component\Evaluation\Nist_access.h"
 #include <string>
 
 using namespace std;
+=======
+
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
 
 // NistTest 对话框
 
@@ -46,6 +50,7 @@ void NistTest::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_APPROXIMATE_LENGTH, m_approximateEntropyBlockLength);
 	DDX_Text(pDX, IDC_LINEAR_LENGTH, m_linearComplexitySequenceLength);
 	DDX_Text(pDX, IDC_SERIAL_LENGTH, m_serialBlockLength);
+<<<<<<< HEAD
 	DDX_Control(pDX, IDC_START, m_StartEvaluation);
 	DDX_Control(pDX, IDC_SHOW_RESULT, m_ShowResult);
 	DDX_Control(pDX, IDC_CHECK1, m_BlockFrequency);
@@ -63,12 +68,17 @@ void NistTest::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CHECK14, m_Rank);
 	DDX_Control(pDX, IDC_CHECK15, m_RandomExcursionsVariant);
 	DDX_Control(pDX, IDC_CHECK7, m_Universal);
+=======
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
 }
 
 
 BEGIN_MESSAGE_MAP(NistTest, CDialog)
+<<<<<<< HEAD
 	ON_BN_CLICKED(IDC_RNG_GENERATE, &NistTest::OnBnClickedRngGenerate)
 	ON_BN_CLICKED(IDC_START, &NistTest::OnBnClickedStart)
+=======
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
 END_MESSAGE_MAP()
 
 
@@ -90,6 +100,7 @@ BOOL NistTest::OnInitDialog()
 	m_serialBlockLength=16;
 	UpdateData(false);
 
+<<<<<<< HEAD
 	tp.blockFrequencyBlockLength = 128;
 	tp.nonOverlappingTemplateBlockLength = 9;
 	tp.overlappingTemplateBlockLength = 9;
@@ -172,3 +183,8 @@ void NistTest::StartProcess()
 	option = 0;
 	mode = 0;
 }
+=======
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9

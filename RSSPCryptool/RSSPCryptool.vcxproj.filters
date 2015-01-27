@@ -75,6 +75,7 @@
     <ClInclude Include="Component\View\NistTest.h">
       <Filter>Component\View\Headers</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Component\Evaluation\cephes.h">
       <Filter>Component\Evaluation\Headers</Filter>
     </ClInclude>
@@ -111,6 +112,8 @@
     <ClInclude Include="Component\Evaluation\Nist_access.h">
       <Filter>Component\Logic\Headers</Filter>
     </ClInclude>
+=======
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\RSSPCryptool.cpp">
@@ -131,6 +134,7 @@
     <ClCompile Include="Component\View\NistTest.cpp">
       <Filter>Component\View</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Component\Evaluation\approximateEntropy.cpp">
       <Filter>Component\Evaluation</Filter>
     </ClCompile>
@@ -200,5 +204,7 @@
     <ClCompile Include="Component\Evaluation\Nist_access.cpp">
       <Filter>Component\Logic</Filter>
     </ClCompile>
+=======
+>>>>>>> fbe48335fac8a1a149075b17cb5d5bf51e201ba9
   </ItemGroup>
 </Project>
