@@ -1,0 +1,113 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;Jason 2014/8/25;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LIBRARY BaseCrypto
+
+EXPORTS
+
+DLL_ALGORITHM_TYPE DATA
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;分组密码算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;静态变量
+B_AMOUNT DATA
+B_ALGORITHM_NAME DATA
+B_KEY_LENGTH DATA
+B_BLOCK_SIZE DATA
+BLOCK_CIPHERS DATA
+
+;;;;;;接口函数
+Use_Blowfish
+Use_Camellia
+Use_CAST256
+Use_DES_EDE3
+Use_IDEA
+
+;暂且不导出Use_LubyRack
+
+Use_MARS
+Use_RC5
+Use_RC6
+Use_SEED
+Use_Serpent
+Use_SHACAL2
+Use_SKIPJACK
+Use_TEA
+Use_Twofish
+Use_XTEA
+Use_AES
+;不安全的算法
+Use_DES
+Use_GOST
+Use_SHARK
+Use_Square
+Use_ThreeWay
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;流密码算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;静态变量
+S_AMOUNT DATA
+S_ALGORITHM_NAME DATA
+S_KEY_LENGTH DATA
+S_IV_LENGTH DATA
+STREAM_CIPHERS DATA
+
+;;;;接口函数
+Use_Sosemanuk
+Use_Salsa20
+Use_XSalsa20
+Use_SEAL
+Use_PanamaCipher
+
+;不安全的算法
+Use_RC4
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;HASH算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;静态常量
+H_AMOUNT DATA
+H_ALGORITHM_NAME DATA
+H_DIGEST_SIZE DATA
+HASH_CIPHERS DATA
+
+;;;;调用接口
+Use_MD2
+Use_MD4
+Use_MD5
+Use_SHA1
+Use_SHA256
+Use_SHA224
+Use_SHA512
+Use_SHA384
+Use_SHA3_224
+Use_SHA3_256
+Use_SHA3_384
+Use_SHA3_512
+Use_Tiger
+Use_Whirlpool
+Use_RIPEMD160
+Use_RIPEMD320
+Use_RIPEMD128
+Use_RIPEMD256
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;消息认证算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;静态常量
+M_AMOUNT DATA
+M_ALGORITHM_NAME DATA
+M_KEY_LENGTH DATA
+M_MAC_LENGTH DATA
+MAC_CIPHERS DATA
+
+;;;;调用接口
+Use_CBC_MAC_AES
+Use_CMAC_AES
+Use_DMAC_AES
+Use_HMAC_SHA1
+Use_VMAC_AES
+Use_TTMAC
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;随机数生成器;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;静态常量
+R_AMOUNT DATA
+R_ALGORITHM_NAME DATA
+RNG_CIPHERS DATA
+
+;;;;调用接口
+Use_BBS
+Use_LCG

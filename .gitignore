@@ -6,5 +6,6 @@
 #过滤文件夹
 Debug/
 RSSPCryptool/Debug/
+BaseCrypto/Debug
 Release/
 ipch/
