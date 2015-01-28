@@ -108,7 +108,7 @@
     <ClInclude Include="Component\Evaluation\utilities.h">
       <Filter>Component\Evaluation\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Component\Evaluation\Nist_access.h">
+    <ClInclude Include="Component\Logic\Nist_access.h">
       <Filter>Component\Logic\Headers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,7 +197,7 @@
     <ClCompile Include="Component\Evaluation\utilities.cpp">
       <Filter>Component\Evaluation</Filter>
     </ClCompile>
-    <ClCompile Include="Component\Evaluation\Nist_access.cpp">
+    <ClCompile Include="Component\Logic\Nist_access.cpp">
       <Filter>Component\Logic</Filter>
     </ClCompile>
   </ItemGroup>

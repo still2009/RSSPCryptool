@@ -1,0 +1,5 @@
+	NONOVERLAPPING TEMPLATES TESTS ABORTED DUE TO ONE OF THE FOLLOWING : 
+	Lambda (0.009415) not being positive!
+	Template file <Component/Evaluation/templates/template17> not existing
+	Insufficient memory for required work space.
+
