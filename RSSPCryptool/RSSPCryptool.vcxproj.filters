@@ -36,6 +36,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Component\AlgDll">
+      <UniqueIdentifier>{734de059-99fc-4c95-80dc-2982faf4fcf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\RSSPCryptool.rc2">
@@ -110,6 +113,12 @@
     </ClInclude>
     <ClInclude Include="Component\Evaluation\Nist_access.h">
       <Filter>Component\Logic\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\DllApi\AlgDllApi.h">
+      <Filter>Component\DllApi\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\AlgTestDlg.h">
+      <Filter>Component\View\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +208,12 @@
     </ClCompile>
     <ClCompile Include="Component\Evaluation\Nist_access.cpp">
       <Filter>Component\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\DllApi\AlgDllApi.cpp">
+      <Filter>Component\DllApi</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\View\AlgTestDlg.cpp">
+      <Filter>Component\View</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

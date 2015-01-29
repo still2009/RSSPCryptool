@@ -104,10 +104,12 @@ BOOL CRSSPCryptoolDlg::OnInitDialog()
 	
 	//初始化Tab Control控件
 	m_tab.InsertItem(0, _T("算法管理"));
-	m_tab.InsertItem(1, _T("雪崩效应测试"));
-	m_tab.InsertItem(2, _T("NIST随机性测试"));
+	m_tab.InsertItem(1, _T("算法测试"));
+	m_tab.InsertItem(2, _T("雪崩效应测试"));
+	m_tab.InsertItem(3, _T("NIST随机性测试"));
 
 	m_manageDlg.Create(IDD_MANAGE,&m_tab);
+	m_algTestDlg.Create(IDD_ALG_TEST,&m_tab);
 	m_sensitivityTestDlg.Create(IDD_SENSITIVITY_TEST,&m_tab);
 	m_nistTestDlg.Create(IDD_NIST_TEST,&m_tab);
 
@@ -116,10 +118,12 @@ BOOL CRSSPCryptoolDlg::OnInitDialog()
 	tabRect.top += 22;
 	
 	m_manageDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
+	m_algTestDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
 	m_sensitivityTestDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
 	m_nistTestDlg.MoveWindow(tabRect.left,tabRect.top,tabRect.Width(),tabRect.Height());
 
 	m_manageDlg.ShowWindow(SW_SHOW);
+	m_algTestDlg.ShowWindow(SW_HIDE);
 	m_sensitivityTestDlg.ShowWindow(SW_HIDE);
 	m_nistTestDlg.ShowWindow(SW_HIDE);
 
@@ -182,19 +186,27 @@ void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
 	switch(m_tab.GetCurSel()){
 	case 0:
 		m_manageDlg.ShowWindow(SW_SHOW);
+		m_algTestDlg.ShowWindow(SW_HIDE);
 		m_sensitivityTestDlg.ShowWindow(SW_HIDE);
 		m_nistTestDlg.ShowWindow(SW_HIDE);
 		break;
 	case 1:
 		m_manageDlg.ShowWindow(SW_HIDE);
-		m_sensitivityTestDlg.ShowWindow(SW_SHOW);
+		m_algTestDlg.ShowWindow(SW_SHOW);
+		m_sensitivityTestDlg.ShowWindow(SW_HIDE);
 		m_nistTestDlg.ShowWindow(SW_HIDE);
 		break;
 	case 2:
 		m_manageDlg.ShowWindow(SW_HIDE);
+		m_algTestDlg.ShowWindow(SW_HIDE);
+		m_sensitivityTestDlg.ShowWindow(SW_SHOW);
+		m_nistTestDlg.ShowWindow(SW_HIDE);
+		break;
+	case 3:
+		m_manageDlg.ShowWindow(SW_HIDE);
+		m_algTestDlg.ShowWindow(SW_HIDE);
 		m_sensitivityTestDlg.ShowWindow(SW_HIDE);
 		m_nistTestDlg.ShowWindow(SW_SHOW);
-		break;
 	}
 }
 

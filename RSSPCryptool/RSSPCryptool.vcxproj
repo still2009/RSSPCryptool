@@ -103,6 +103,7 @@
     <ResourceCompile Include="RSSPCryptool.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\DllApi\AlgDllApi.h" />
     <ClInclude Include="Component\Evaluation\cephes.h" />
     <ClInclude Include="Component\Evaluation\config.h" />
     <ClInclude Include="Component\Evaluation\decls.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="Component\Evaluation\Nist_access.h" />
     <ClInclude Include="Component\Evaluation\stat_fncs.h" />
     <ClInclude Include="Component\Evaluation\utilities.h" />
+    <ClInclude Include="Component\View\AlgTestDlg.h" />
     <ClInclude Include="Component\View\Manage.h" />
     <ClInclude Include="Component\View\NistTest.h" />
     <ClInclude Include="Component\View\RSSPCryptool.h" />
@@ -125,6 +127,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Component\DllApi\AlgDllApi.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Component\Evaluation\approximateEntropy.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -194,6 +199,7 @@
     <ClCompile Include="Component\Evaluation\utilities.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Component\View\AlgTestDlg.cpp" />
     <ClCompile Include="Component\View\Manage.cpp" />
     <ClCompile Include="Component\View\NistTest.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">G:\GitProject\rsspcryptool\RSSPCryptool\Component\Logic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

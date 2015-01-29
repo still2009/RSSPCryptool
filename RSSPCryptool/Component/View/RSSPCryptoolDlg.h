@@ -6,6 +6,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "Manage.h"
+#include "AlgTestDlg.h"
 #include "SensitivityTest.h"
 #include "NistTest.h"
 
@@ -16,6 +17,7 @@ class CRSSPCryptoolDlg : public CDialogEx
 public:
 	CRSSPCryptoolDlg(CWnd* pParent = NULL);	// 标准构造函数
 	Manage m_manageDlg;
+	AlgTestDlg m_algTestDlg;
 	SensitivityTest m_sensitivityTestDlg;
 	NistTest m_nistTestDlg;
 
