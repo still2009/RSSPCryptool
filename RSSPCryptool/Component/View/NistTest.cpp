@@ -7,7 +7,7 @@
 #include "afxdialogex.h"
 #include "Component\Evaluation\externs.h"
 #include "Component\Evaluation\utilities.h"
-#include "Component\Evaluation\Nist_access.h"
+#include "Component\Logic\Nist_access.h"
 #include <string>
 
 using namespace std;
@@ -69,6 +69,7 @@ void NistTest::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(NistTest, CDialog)
 	ON_BN_CLICKED(IDC_RNG_GENERATE, &NistTest::OnBnClickedRngGenerate)
 	ON_BN_CLICKED(IDC_START, &NistTest::OnBnClickedStart)
+	ON_BN_CLICKED(IDC_SHOW_RESULT, &NistTest::OnBnClickedShowResult)
 END_MESSAGE_MAP()
 
 
@@ -115,6 +116,8 @@ void NistTest::OnBnClickedStart()
 	InitTestVector();
 	ChooseTest();
 	SetParameter();
+	StartProcess();
+	ResultFile();
 }
 
 //选择评测项
@@ -171,4 +174,49 @@ void NistTest::StartProcess()
 {
 	option = 0;
 	mode = 0;
+	streamFile = "Component/Evaluation/RNG.txt"; //随机数存放文件路径
+	openOutputStreams(option);
+	invokeTestSuite(option,streamFile,mode);
+	fclose(freqfp);
+	for( int i=1; i<=NUMOFTESTS; i++ ) {
+		if ( stats[i] != NULL )
+			fclose(stats[i]);
+		if ( results[i] != NULL )
+			fclose(results[i]);
+	}
+	if ( (testVector[0] == 1) || (testVector[TEST_CUSUM] == 1) ) 
+		partitionResultFile(2, tp.numOfBitStreams, option, TEST_CUSUM);
+	if ( (testVector[0] == 1) || (testVector[TEST_NONPERIODIC] == 1) ) 
+		partitionResultFile(MAXNUMOFTEMPLATES, tp.numOfBitStreams, option, TEST_NONPERIODIC);
+	if ( (testVector[0] == 1) || (testVector[TEST_RND_EXCURSION] == 1) )
+		partitionResultFile(8, tp.numOfBitStreams, option, TEST_RND_EXCURSION);
+	if ( (testVector[0] == 1) || (testVector[TEST_RND_EXCURSION_VAR] == 1) )
+		partitionResultFile(18, tp.numOfBitStreams, option, TEST_RND_EXCURSION_VAR);
+	if ( (testVector[0] == 1) || (testVector[TEST_SERIAL] == 1) )
+		partitionResultFile(2, tp.numOfBitStreams, option, TEST_SERIAL);
+}
+
+//生成所有结果文档
+void NistTest::ResultFile()
+{
+	fprintf(summary, "------------------------------------------------------------------------------\n");
+	fprintf(summary, "RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES\n");
+	fprintf(summary, "------------------------------------------------------------------------------\n");
+	fprintf(summary, "   generator is <%s>\n", streamFile);
+	fprintf(summary, "------------------------------------------------------------------------------\n");
+	fprintf(summary, " C1  C2  C3  C4  C5  C6  C7  C8  C9 C10  P-VALUE  PROPORTION  STATISTICAL TEST\n");
+	fprintf(summary, "------------------------------------------------------------------------------\n");
+	postProcessResults(option);
+	fclose(summary);
+
+	AfxMessageBox(_T("DONE!"));
+}
+
+
+void NistTest::OnBnClickedShowResult()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	char freqfn[200];
+	sprintf(freqfn,"notepad.exe Component/Evaluation/experiments/%s/finalAnalysisReport.txt",generatorDir[option]);
+	::WinExec(freqfn,SW_SHOW);
 }

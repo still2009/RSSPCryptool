@@ -113,10 +113,10 @@
     <ClInclude Include="Component\Evaluation\generators.h" />
     <ClInclude Include="Component\Evaluation\genutils.h" />
     <ClInclude Include="Component\Evaluation\matrix.h" />
-    <ClInclude Include="Component\Evaluation\Nist_access.h" />
     <ClInclude Include="Component\Evaluation\stat_fncs.h" />
     <ClInclude Include="Component\Evaluation\utilities.h" />
     <ClInclude Include="Component\View\AlgTestDlg.h" />
+    <ClInclude Include="Component\Logic\Nist_access.h" />
     <ClInclude Include="Component\View\Manage.h" />
     <ClInclude Include="Component\View\NistTest.h" />
     <ClInclude Include="Component\View\RSSPCryptool.h" />
@@ -169,9 +169,6 @@
     <ClCompile Include="Component\Evaluation\matrix.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Component\Evaluation\Nist_access.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Component\Evaluation\nonOverlappingTemplateMatchings.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -200,6 +197,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Component\View\AlgTestDlg.cpp" />
+    <ClCompile Include="Component\Logic\Nist_access.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Component\View\Manage.cpp" />
     <ClCompile Include="Component\View\NistTest.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">G:\GitProject\rsspcryptool\RSSPCryptool\Component\Logic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

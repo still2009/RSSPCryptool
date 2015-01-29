@@ -52,4 +52,6 @@ public:
 	void ChooseTest();
 	void SetParameter();
 	void StartProcess();
+	void ResultFile();
+	afx_msg void OnBnClickedShowResult();
 };
