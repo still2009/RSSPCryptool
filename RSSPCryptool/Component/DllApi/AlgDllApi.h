@@ -12,12 +12,7 @@
 	#define DLL_CLOSE(x) FreeLibrary(x);
 #endif
 
-#include <iostream>
-#include <fstream>
-#include <stdlib.h>
-#include <cstring>
-#include <windows.h>
-#include <string>
+#include "stdafx.h"
 using namespace std;
 /************************************************************************/
 /* version 2014/11/8      MAC: VMAC needs initial vector                 */
@@ -87,53 +82,58 @@ const string R[] = {
 };
 
 
+//配置文件设定：Config.txt AlgCfg.txt
+//算法与Dll文件映射关系（工作量小，所以使用动态判断）
+//给定Dll文件目录-->列出目录下的所有Dll-->获取每个Dll的HINSTANCE存储到数组中
+//①从config文件中读取dll文件目录②获得目录下每个Dll文件的文件名③使用DLL_OPEN获得所有句柄
+class DllMng{
+private:
+	CFileFind finder;
+	HINSTANCE * handles;//所有dll的句柄数组
+	int amount;//dll的数量
+
+	string getDllDir();//获取dll文件目录
+	
+
+public:
+	int LoadDlls();//获得所有句柄
+	int FreeDlls();//释放所有句柄
+	void * getAddr(string name);//在所有dll中搜寻导出变量、函数的地址
+}; 
+
+
+
 
 /*算法库DLL的调用接口
-**库的加载与释放
 **使用算法加解密
 */
-class AlgDllApi{
+class AlgMng{
 private:
+	//算法配置文件读取
 	fstream AlgLoadFile;
-	fstream AlgInfoFile;
-	HINSTANCE dll;
-	/*填充，解填充相关的参数*/
-	int padding_num;
-	int prev_length;
-	void padding(int num = 0);
-	void unpadding();
-public:
 	string path_load;
-	string path_info;
-	string path_dll;
 
-	Cipher *c;
+	//填充，解填充
+	int padding(byte ** msg,int o_len);//按照分组长度填充，返回新长度
+	void unpadding(byte ** msg,int o_len);//还原
 
-	AlgDllApi();
-	~AlgDllApi();
+	//算法信息结构体
+	Cipher *alg;
+public:
+	AlgMng();
+	~AlgMng();
 
+	//获取算法配置（切换）信息
 	string GetCurrentAlg(int type);
-
 	int GetCurrentMode();
 
-	string GetDllName(string name);
-
-	void GetDllCipher(int AlgType,string AlgName);
-
-	bool RunCipher();
-
-	byte * RunBlock(bool direct,byte* input,int len,byte* key,int mode,byte *iv = NULL);
-
-	byte * RunStream(bool direct,byte* input,int len,byte* key,byte* iv);
-
-	byte * RunHash(string msg);
-
-	byte * RunMac(string input,byte* key,byte *iv = NULL);
-
-	byte * RunRng(int seed,int size);
-
-	static void ShowHex(byte *arr,int len);
-	//CString Byte2HexString(byte *array,int len);
-	
-	//char *GetAnsiString(const CString &s);
+	//算法调用相关
+	void setAlg(int type,string name);
+	//密钥长度，分组长度，hash摘要长度
+	int GetLength(int itemType);
+	byte * RunCipher(bool direct,byte* input,int len,byte* key,int mode,byte *iv = NULL);
+	//byte * RunCipher(bool direct,byte* input,int len,byte* key,byte* iv);
+	//byte * RunCipher(string msg);
+	//byte * RunCipher(string input,byte* key,byte *iv = NULL);
+	//byte * RunCipher(int seed,int size);
 };

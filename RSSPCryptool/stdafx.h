@@ -37,12 +37,12 @@
 
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
 
-
-
-
-
-
-
+//其他通用的头文件
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <windows.h>
+#include <string>
 
 
 

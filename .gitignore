@@ -1,7 +1,7 @@
 ﻿#过滤数据库文件
 *.sdf
 *.opensdf
-
+*.suo
 
 #过滤文件夹
 Debug/

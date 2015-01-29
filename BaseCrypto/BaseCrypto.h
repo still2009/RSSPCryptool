@@ -40,9 +40,11 @@ enum Mode{
 	CTR
 };
 typedef struct {
+	//算法基本信息
 	int AlgType; char * AlgName;
 	char *DllPath; void * pFun;
 
+	//调用算法相关参数
 	bool direct;
 	byte * input; int input_len;
 	byte * key; int key_len;
