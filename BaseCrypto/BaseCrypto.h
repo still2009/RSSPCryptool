@@ -40,26 +40,20 @@ enum Mode{
 	CTR
 };
 typedef struct {
-	//算法基本信息
+	char *DllName;
 	int AlgType; char * AlgName;
-	char *DllPath; void * pFun;
 
-	//调用算法相关参数
-	bool direct;
-	byte * input; int input_len;
-	byte * key; int key_len;
-	byte * output; int output_len;
-	byte * iv; int iv_len;
-	int mode; int block_size;
-	int seed;
+	int key_len;int output_len;
+	int iv_len;int block_size;
+	int seed_len;
 } Cipher;
 
 //结构体赋值简化宏定义
-#define BlockInfo(name,key_len,block_size) {BLOCK,name,NULL,NULL,true,NULL,0,NULL,key_len,NULL,0,NULL,0,0,block_size,0}
-#define StreamInfo(name,key_len,iv_len) {STREAM,name,NULL,NULL,true,NULL,0,NULL,key_len,NULL,0,NULL,iv_len,0,0,0}
-#define HashInfo(name,digest_size) {HASH,name,NULL,NULL,true,NULL,0,NULL,0,NULL,digest_size,NULL,0,0,0,0}
-#define MacInfo(name,key_len,mac_len) {MAC,name,NULL,NULL,true,NULL,0,NULL,key_len,NULL,mac_len,NULL,0,0,0,0}
-#define RngInfo(name) {RNG,name,NULL,NULL,true,NULL,0,NULL,0,NULL,0,NULL,0,0,0,0}
+#define BlockInfo(name,key_len,block_size) {"BaseCrypto.dll",BLOCK,name,key_len,0,block_size,block_size,0}
+#define StreamInfo(name,key_len,iv_len) {"BaseCrypto.dll",STREAM,name,key_len,0,iv_len,0,0}
+#define HashInfo(name,digest_size) {"BaseCrypto.dll",HASH,name,0,digest_size,0,0,0}
+#define MacInfo(name,key_len,mac_len) {"BaseCrypto.dll",MAC,name,key_len,mac_len,0,0,0}
+#define RngInfo(name,s_len) {"BaseCrypto.dll",RNG,name,0,0,0,0,s_len}
 //简化的宏定义
 #define _Block_Cipher_Parameters_ bool direct,byte * key,int key_len,byte * plain,int plain_len,byte * cipher,int cipher_len,int mode_id = ECB,byte * iv = NULL,int iv_len = 0
 #define B(x) return Use_BlockCipher<x>(direct,key,key_len,plain,plain_len,cipher,cipher_len,mode_id,iv,iv_len);

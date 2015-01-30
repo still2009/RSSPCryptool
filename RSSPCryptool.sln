@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RSSPCryptool", "RSSPCryptoo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseCrypto", "BaseCrypto\BaseCrypto.vcxproj", "{089C9F93-1764-43BC-ABF4-DD916B408A56}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{FDDCB43A-4D67-407A-B442-6FFBCB2D22FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{089C9F93-1764-43BC-ABF4-DD916B408A56}.Debug|Win32.Build.0 = Debug|Win32
 		{089C9F93-1764-43BC-ABF4-DD916B408A56}.Release|Win32.ActiveCfg = Release|Win32
 		{089C9F93-1764-43BC-ABF4-DD916B408A56}.Release|Win32.Build.0 = Release|Win32
+		{FDDCB43A-4D67-407A-B442-6FFBCB2D22FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FDDCB43A-4D67-407A-B442-6FFBCB2D22FE}.Debug|Win32.Build.0 = Debug|Win32
+		{FDDCB43A-4D67-407A-B442-6FFBCB2D22FE}.Release|Win32.ActiveCfg = Release|Win32
+		{FDDCB43A-4D67-407A-B442-6FFBCB2D22FE}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
