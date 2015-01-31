@@ -11,25 +11,23 @@
 	#define DLL_GET(x,y) GetProcAddress(x,y)
 	#define DLL_CLOSE(x) FreeLibrary(x)
 #endif
-
 using namespace std;
+
+#define hex(head,len) for(int i = 0;i < len;i++) printf("%02x",head[i])
 /************************************************************************/
 /* version 2014/11/8      MAC: VMAC needs initial vector                 */
 /************************************
 ************************************/
 enum Mode{
-	ECB = 1,
-	CBC,
-	CFB,
-	OFB,
-	CTR
+	ECB = 1,CBC,CFB,OFB,CTR
 };
 enum AlgType{
-	BLOCK = 1,
-	STREAM,
-	HASH,
-	MAC,
-	RNG
+	BLOCK = 1,STREAM,HASH,MAC,RNG
+};
+enum LenType{
+	BLOCK_SIZE = 1,IV_LEN,KEY_LEN,
+	DIGEST_LEN,MAC_LEN,SEED_LEN,
+	CIPHER_LEN
 };
 typedef unsigned char byte;
 typedef struct {
@@ -40,13 +38,14 @@ typedef struct {
 	int output_len;int iv_len;
 	int block_size;int seed_len;
 } Cipher;
+
 typedef Cipher * HCIPHER;
 
 typedef bool (*pBlockCipher)(bool,byte *,int,byte *,int,byte *,int,int,byte *,int);
 typedef bool (*pStreamCipher)(bool,byte *,int,byte *,int,byte *,int,byte *,int);
 typedef bool (*pHashFuction)(byte *,byte *,int);
 typedef bool (*pMacConstructor)(byte *,int,byte *,int,byte *,int,byte *);
-typedef byte * (*pRng)(int seed,int size);
+typedef bool (*pRng)(int seed,int size,byte *);
 
 
 
@@ -108,7 +107,7 @@ public:
 };
 
 /***********************全局唯一DllMng对象*************************/
-//DllMng dllMng;
+DllMng dllMng;
 
 
 /*算法库DLL的调用接口
@@ -120,12 +119,14 @@ private:
 	int padding(byte ** msg,int o_len);//按照分组长度填充，返回新长度
 	void unpadding(byte ** msg,int o_len);//还原
 
-	//算法信息
-	CArray<HCIPHER> * info;
+	//当前算法信息
 	Cipher * alg;
 	//库管理对象指针
 	DllMng * dllMng;
 public:
+	//所有算法信息
+	CArray<HCIPHER> * info;
+
 	AlgMng(DllMng * dllMng);
 	~AlgMng();
 
@@ -136,6 +137,10 @@ public:
 	//算法调用相关
 	void setAlg(int type,CString name);
 	//密钥长度，分组长度，hash摘要长度
-	int GetLength(int itemType);
+	int GetLength(int itemType,int plain_len = 0);
 	byte * RunCipher(bool direct,byte* input,int len,byte* key,int mode,byte *iv = NULL);
+	byte * RunCipher(bool direct,byte* input,int len,byte* key,byte* iv);
+	byte * RunCipher(byte * msg);
+	byte * RunCipher(byte * input,int len,byte* key,byte *iv = NULL);
+	byte * RunCipher(int seed,int size);
 };

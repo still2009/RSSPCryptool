@@ -96,6 +96,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\DllApi Guide.txt" />
     <None Include="res\RSSPCryptool.ico" />
     <None Include="res\RSSPCryptool.rc2" />
   </ItemGroup>

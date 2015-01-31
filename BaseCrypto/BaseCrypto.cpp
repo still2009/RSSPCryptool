@@ -184,17 +184,15 @@ bool Use_TTMAC(_MAC_Parameters_){M(TTMAC)}
 /************************随机数生成器*****************************/
 extern const int R_AMOUNT = 2;
 
-byte *Use_BBS(_RNG_Parameters_){
-	byte *block = new byte[size];
+bool Use_BBS(_RNG_Parameters_){
 	BlumBlumShub rng(383,503,seed);
-	rng.GenerateBlock(block,size);
-	return block;
+	rng.GenerateBlock(input,size);
+	return input == NULL ? false : true;
 }
-byte *Use_LCG(_RNG_Parameters_){
-	byte *block = new byte[size];
+bool Use_LCG(_RNG_Parameters_){
 	LC_RNG rng(seed);
-	rng.GenerateBlock(block,size);
-	return block;
+	rng.GenerateBlock(input,size);
+	return input == NULL ? false : true;
 }
 
 

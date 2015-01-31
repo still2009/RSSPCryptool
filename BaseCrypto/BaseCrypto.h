@@ -67,7 +67,7 @@ typedef struct {
 #define _MAC_Parameters_ byte *key,int key_len,byte *msg,int msg_len,byte *mac,int mac_len,byte *iv
 #define M(x) return Use_MAC<x>(key,key_len,msg,msg_len,mac,mac_len,iv);
 
-#define _RNG_Parameters_ int seed,int size
+#define _RNG_Parameters_ int seed,int size,byte *input
 
 #define KL(x) x::DEFAULT_KEYLENGTH
 #define BS(x) x::BLOCKSIZE

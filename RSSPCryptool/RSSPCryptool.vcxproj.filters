@@ -47,6 +47,9 @@
     <None Include="res\RSSPCryptool.ico">
       <Filter>Resources</Filter>
     </None>
+    <None Include="..\DllApi Guide.txt">
+      <Filter>Component\DllApi</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RSSPCryptool.rc">

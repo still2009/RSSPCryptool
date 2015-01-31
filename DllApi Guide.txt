@@ -1,0 +1,21 @@
+算法API说明
+
+①API分DllMng与AlgMng类。前者负责库的加载与到处变量的获取，后者提供加密、解密函数。
+②整个程序全局共用一个DllMng对象。
+③使用者只需要生成AlgMng对象，生成时需要传递一个DllMng对象指针
+code:
+	AlgMng mng(&dllMng);
+④调用算法分2个步骤：1.指定算法，获取相关信息  2.调用函数获取结果
+code:
+	mng.setAlg(BLOCK,"AES");
+	mng.RunCipher(xxxxx加密相关参数,不同类型算法的参数数量均不同xxxxx);
+⑤一个AlgMng可用做多个算法的加密、解密，只需要重新调用setAlg函数即可。
+
+⑥每个算法的信息都被封装在一个Cipher类型的结构体中，
+所有的Dll中所有算法Cipher结构体变量都以CArray对象指针的形式存储在AlgMng类中，可以公开读取内容，但禁止修改其取值。
+code:
+	for(int i = 0;i < mng.info->GetSize();i++){
+		cout<<mng.info->GetAt(i)->AlgName;
+	}//打印出所有算法的名称
+
+⑦其他问题请参见源代码，将Test项目设置为启动项目，反注释掉AlgDllApi.cpp中的_tmain函数
