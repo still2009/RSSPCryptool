@@ -106,9 +106,6 @@ public:
 	CArray<HCIPHER> * getCiphers();
 };
 
-/***********************全局唯一DllMng对象*************************/
-DllMng dllMng;
-
 
 /*算法库DLL的调用接口
 **使用算法加解密
@@ -144,3 +141,7 @@ public:
 	byte * RunCipher(byte * input,int len,byte* key,byte *iv = NULL);
 	byte * RunCipher(int seed,int size);
 };
+
+
+/***********************全局唯一DllMng对象*************************/
+extern DllMng dllMng;
