@@ -5,6 +5,7 @@
 #include "RSSPCryptool.h"
 #include "NistTest.h"
 #include "afxdialogex.h"
+#include "Component\DllApi\AlgDllApi.h"
 #include "Component\Evaluation\externs.h"
 #include "Component\Evaluation\utilities.h"
 #include "Component\Logic\Nist_access.h"

@@ -24,6 +24,7 @@ void DllMng::getDllDir(){
 		}
 	}else dllDir = "ERROR";
 	dllDir =  CString(buff,len);
+	cfgFile.close();
 }
 
 void DllMng::LoadDlls(){
@@ -116,6 +117,17 @@ void AlgMng::unpadding(byte ** msg,int o_len){
 }
 
 CString AlgMng::GetCurrentAlg(int type){
+	/*char buff[100];
+	int len = 0;
+	cfgFile.open("Config.txt",ios::in);
+	if(cfgFile.is_open()){
+		while(!cfgFile.eof()){
+			cfgFile.read(buff+len,1);
+			if(buff[len] == ';') break;
+			len++;
+		}
+	}
+	*/
 	return "nothing";
 }
 
@@ -205,39 +217,43 @@ byte * AlgMng::RunCipher(int seed,int size){
 	return succ ? output : NULL;
 }
 
-//int _tmain(int argc, _TCHAR* argv[])
-//{
-//	char text[16] = {'1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6'};
-//	string plain = "Hello World!";
-//	int len = plain.length();
-//	byte *p = (byte *)plain.data();
-//	AlgMng mng(&dllMng);
-//	byte * output,* dec;
-//
-//	for(int i = 0;i < mng.info->GetSize();i++){
-//		cout<<mng.info->GetAt(i)->AlgName<<endl;
-//	}
-//	//STREAM CIPHER
-//	mng.setAlg(STREAM,"Sosemanuk");
-//	output = mng.RunCipher(true,p,len,(byte *)text,(byte *)text);
-//	dec = mng.RunCipher(false,output,len,(byte *)text,(byte *)text);
-//
-//	hex(output,len);
-//	printf("\n");
-//	hex(dec,len);
-//	printf("\n");
-//
-//	//BLOCK CIPHER
-//	mng.setAlg(BLOCK,"AES");
-//	output = mng.RunCipher(true,p,len,(byte *)text,ECB);
-//	dec = mng.RunCipher(false,output,mng.GetLength(CIPHER_LEN,len),(byte *)text,ECB);
-//
-//	hex(output,mng.GetLength(CIPHER_LEN,len));
-//	printf("\n");
-//	hex(dec,mng.GetLength(CIPHER_LEN,len));
-//	printf("\n");
-//
-//	system("pause");
-//	return 0;
-//
-//}
+
+/***********************全局唯一DllMng对象定义*************************/
+DllMng dllMng;
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	char text[16] = {'1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6'};
+	string plain = "Hello World!";
+	int len = plain.length();
+	byte *p = (byte *)plain.data();
+	AlgMng mng(&dllMng);
+	byte * output,* dec;
+
+	for(int i = 0;i < mng.info->GetSize();i++){
+		cout<<mng.info->GetAt(i)->AlgName<<endl;
+	}
+	//STREAM CIPHER
+	mng.setAlg(STREAM,"Sosemanuk");
+	output = mng.RunCipher(true,p,len,(byte *)text,(byte *)text);
+	dec = mng.RunCipher(false,output,len,(byte *)text,(byte *)text);
+
+	hex(output,len);
+	printf("\n");
+	hex(dec,len);
+	printf("\n");
+
+	//BLOCK CIPHER
+	mng.setAlg(BLOCK,"AES");
+	output = mng.RunCipher(true,p,len,(byte *)text,ECB);
+	dec = mng.RunCipher(false,output,mng.GetLength(CIPHER_LEN,len),(byte *)text,ECB);
+
+	hex(output,mng.GetLength(CIPHER_LEN,len));
+	printf("\n");
+	hex(dec,mng.GetLength(CIPHER_LEN,len));
+	printf("\n");
+
+	system("pause");
+	return 0;
+
+}
