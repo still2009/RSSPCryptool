@@ -246,6 +246,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	hex(dec,mng.GetLength(CIPHER_LEN,len));
 	printf("\n");
 
+	int seed=10;
+	int size=4;
+	CString a="BBS";
+	mng.setAlg(RNG,a);
+	output = mng.RunCipher(seed,size);
+	hex(output,size);
+	printf("\n");
+
 	system("pause");
 	return 0;
 
