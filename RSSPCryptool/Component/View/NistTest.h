@@ -54,4 +54,5 @@ public:
 	void StartProcess();
 	void ResultFile();
 	afx_msg void OnBnClickedShowResult();
+	CString m_AlgRNG;
 };

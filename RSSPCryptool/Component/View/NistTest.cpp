@@ -10,6 +10,7 @@
 #include "Component\Evaluation\utilities.h"
 #include "Component\Logic\Nist_access.h"
 #include <string>
+#include "Component\DllApi\AlgDllApi.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ NistTest::NistTest(CWnd* pParent /*=NULL*/)
 	, m_approximateEntropyBlockLength(0)
 	, m_linearComplexitySequenceLength(0)
 	, m_serialBlockLength(0)
+	, m_AlgRNG(_T(""))
 {
 
 }
@@ -64,6 +66,7 @@ void NistTest::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CHECK14, m_Rank);
 	DDX_Control(pDX, IDC_CHECK15, m_RandomExcursionsVariant);
 	DDX_Control(pDX, IDC_CHECK7, m_Universal);
+	DDX_CBString(pDX, IDC_RNG_ALG, m_AlgRNG);
 }
 
 
@@ -108,6 +111,21 @@ BOOL NistTest::OnInitDialog()
 void NistTest::OnBnClickedRngGenerate()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	AlgMng mng(&dllMng);
+	byte * output;
+	int seed=11;
+	int size=4;
+	UpdateData(true);
+	CString a="BBS";
+	mng.setAlg(RNG,m_AlgRNG);
+	output = mng.RunCipher(seed,m_LenOfRNG);
+	
+	FILE *fp;
+	if((fp=fopen("Component/Evaluation/RNG.txt","wb"))==NULL)
+		AfxMessageBox(_T("打开文件失败"));
+	fwrite(output,sizeof(unsigned char),m_LenOfRNG,fp);
+	fclose(fp);
+	AfxMessageBox(_T("随机数生成成功"));
 }
 
 
