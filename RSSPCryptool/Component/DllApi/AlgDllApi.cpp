@@ -4,7 +4,7 @@
 #include "AlgDllApi.h"
 /***********************DllMng的实现******************************/
 DllMng::DllMng(){
-	getDllDir();
+	getCfgList();
 	LoadDlls();
 	getAllCipher();
 }
@@ -12,30 +12,37 @@ DllMng::~DllMng(){
 	FreeDlls();
 }
 
-void DllMng::getDllDir(){
-	char buff[100];
-	int len = 0;
+void DllMng::getCfgList(){
+	char buff[50];
+	int count = 0;
 	cfgFile.open("Config.txt",ios::in);
 	if(cfgFile.is_open()){
 		while(!cfgFile.eof()){
-			cfgFile.read(buff+len,1);
-			if(buff[len] == ';') break;
-			len++;
+			cfgFile.read(buff+count,1);
+			//最后一个分号后面什么都没有
+			if(buff[count] == ';'){
+				cfgList.Add(CString(buff,count));
+				count = -1;
+			}
+			count++;
 		}
-	}else dllDir = "ERROR";
-	dllDir =  CString(buff,len);
+		cfgList.Add(CString(buff,count-1));
+	}
 	cfgFile.close();
+	for(int i = 0;i < cfgList.GetSize();i++){
+		cout<<cfgList.GetAt(i)<<"--";
+	}
 }
 
 void DllMng::LoadDlls(){
-	CString dir(dllDir);
+	CString dir(cfgList.GetAt(DLL_DIR));
 	dir.Append(_T("*.dll"));
 
 	bool succ = finder.FindFile(dir.GetBuffer());
 	while(succ){
 		succ = finder.FindNextFile();
 
-		dir = dllDir;
+		dir = cfgList.GetAt(DLL_DIR);
 		dir.Append(finder.GetFileName());
 
 		handles.Add(DLL_OPEN(dir));
@@ -116,23 +123,9 @@ void AlgMng::unpadding(byte ** msg,int o_len){
 	*msg = n_msg;
 }
 
-CString AlgMng::GetCurrentAlg(int type){
-	/*char buff[100];
-	int len = 0;
-	cfgFile.open("Config.txt",ios::in);
-	if(cfgFile.is_open()){
-		while(!cfgFile.eof()){
-			cfgFile.read(buff+len,1);
-			if(buff[len] == ';') break;
-			len++;
-		}
-	}
-	*/
-	return "nothing";
-}
-
-int AlgMng::GetCurrentMode(){
-	return 0;
+//GetCurrentConfig获取当前配置信息，包括dll目录，当前算法，当前密码工作模式
+CString AlgMng::GetCurrCfg(int curr_type){
+	return dllMng->cfgList.GetAt(curr_type);
 }
 
 //设定马上要使用的算法

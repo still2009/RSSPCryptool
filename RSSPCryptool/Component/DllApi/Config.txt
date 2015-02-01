@@ -1,1 +1,1 @@
-../AlgDll/;AES;Rabbit;SHA1;HMAC;BBS
+../AlgDll/;AES;3;Rabbit;SHA1;HMAC;BBS
