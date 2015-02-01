@@ -1,1 +1,1 @@
-../RSSPCryptool/Component/AlgDll/;AES;Rabbit;SHA1;HMAC;BBS
+../RSSPCryptool/Component/AlgDll/;AES;5;Rabbit;SHA1;HMAC;BBS

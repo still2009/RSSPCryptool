@@ -18,6 +18,9 @@ using namespace std;
 /* version 2014/11/8      MAC: VMAC needs initial vector                 */
 /************************************
 ************************************/
+enum CurrInfo{
+	DLL_DIR = 0,CURR_BLOCK,CURR_MODE,CURR_STREAM,CURR_HASH,CURR_MAC,CURR_RNG
+};
 enum Mode{
 	ECB = 1,CBC,CFB,OFB,CTR
 };
@@ -89,15 +92,16 @@ private:
 	CFileFind finder;//文件查找对象
 	CArray<HINSTANCE> handles;//所有dll的句柄数组
 	CArray<HCIPHER> ciphers;//所有算法信息
-	CString dllDir;//dll文件目录
-
+	
 	//Dll的操作
-	void getDllDir();//获取dll文件目录
 	void LoadDlls();//获得所有句柄
 	void FreeDlls();//释放所有句柄
 
 	void getAllCipher();//获取所有算法库中的所有算法信息结构体Cipher的指针
+	void getCfgList();//获取配置文件信息
 public:
+	CStringArray cfgList;//所有配置项
+
 	DllMng();
 	~DllMng();
 	
@@ -128,8 +132,7 @@ public:
 	~AlgMng();
 
 	//获取算法配置（切换）信息
-	CString GetCurrentAlg(int type);
-	int GetCurrentMode();
+	CString GetCurrCfg(int type);
 
 	//算法调用相关
 	void setAlg(int type,CString name);
