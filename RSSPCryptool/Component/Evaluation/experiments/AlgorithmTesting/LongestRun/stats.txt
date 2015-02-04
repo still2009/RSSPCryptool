@@ -2,12 +2,51 @@
 		---------------------------------------------
 		COMPUTATIONAL INFORMATION:
 		---------------------------------------------
-		(a) N (# of substrings)  = 78
-		(b) M (Substring Length) = 128
-		(c) Chi^2                = 243.045840
+		(a) N (# of substrings)  = 100
+		(b) M (Substring Length) = 8
+		(c) Chi^2                = 365.454545
 		---------------------------------------------
 		      F R E Q U E N C Y
 		---------------------------------------------
-		<=4  5  6  7  8  >=9 P-value  Assignment
-		   0  78   0   0   0    0 FAILURE		p_value = 0.000000
+		  <=1     2     3    >=4   P-value  Assignment
+		 100   0   0    0 FAILURE		p_value = 0.000000
+
+			  LONGEST RUNS OF ONES TEST
+		---------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		---------------------------------------------
+		(a) N (# of substrings)  = 100
+		(b) M (Substring Length) = 8
+		(c) Chi^2                = 2.756062
+		---------------------------------------------
+		      F R E Q U E N C Y
+		---------------------------------------------
+		  <=1     2     3    >=4   P-value  Assignment
+		  28  33  23   16 SUCCESS		p_value = 0.430784
+
+			  LONGEST RUNS OF ONES TEST
+		---------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		---------------------------------------------
+		(a) N (# of substrings)  = 100
+		(b) M (Substring Length) = 8
+		(c) Chi^2                = 1.417545
+		---------------------------------------------
+		      F R E Q U E N C Y
+		---------------------------------------------
+		  <=1     2     3    >=4   P-value  Assignment
+		  25  38  22   15 SUCCESS		p_value = 0.701427
+
+			  LONGEST RUNS OF ONES TEST
+		---------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		---------------------------------------------
+		(a) N (# of substrings)  = 100
+		(b) M (Substring Length) = 8
+		(c) Chi^2                = 4.435745
+		---------------------------------------------
+		      F R E Q U E N C Y
+		---------------------------------------------
+		  <=1     2     3    >=4   P-value  Assignment
+		  28  39  16   17 SUCCESS		p_value = 0.218094
 

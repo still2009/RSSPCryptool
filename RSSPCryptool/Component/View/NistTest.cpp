@@ -113,17 +113,29 @@ void NistTest::OnBnClickedRngGenerate()
 	// TODO: 在此添加控件通知处理程序代码
 	AlgMng mng(&dllMng);
 	byte * output;
-	int seed=11;
-	int size=4;
-	UpdateData(true);
-	CString a="BBS";
-	mng.setAlg(RNG,m_AlgRNG);
-	output = mng.RunCipher(seed,m_LenOfRNG);
-	
+	int seed;
 	FILE *fp;
-	if((fp=fopen("Component/Evaluation/RNG.txt","wb"))==NULL)
+	int BitData[8];
+	if((fp=fopen("Component/Evaluation/RNG.txt","w"))==NULL)
 		AfxMessageBox(_T("打开文件失败"));
-	fwrite(output,sizeof(unsigned char),m_LenOfRNG,fp);
+	UpdateData(true);
+	if(m_AlgRNG==_T(""))
+	{
+		AfxMessageBox(_T("选择随机数算法"));
+		return;
+	}
+	mng.setAlg(RNG,m_AlgRNG);
+	for(int n=1;n<=m_NumOfRNG;n++)
+	{
+		seed=n;
+		output = mng.RunCipher(seed,m_LenOfRNG);
+		for(int i=0;i<m_LenOfRNG;i++)
+		{
+			ByteToBit(output[i],BitData);
+			for(int j=0;j<8;j++)
+				fprintf(fp,_T("%d"),BitData[j]);
+		}
+	}
 	fclose(fp);
 	AfxMessageBox(_T("随机数生成成功"));
 }
@@ -184,7 +196,7 @@ void NistTest::SetParameter()
 	tp.nonOverlappingTemplateBlockLength = m_nonOverlappingTemplateBlockLength;
 	tp.overlappingTemplateBlockLength = m_overlappingTemplateBlockLength;
 	tp.serialBlockLength = m_serialBlockLength;
-	tp.n = m_LenOfRNG;
+	tp.n = m_LenOfRNG * 8;
 	tp.numOfBitStreams = m_NumOfRNG;
 }
 
@@ -238,4 +250,15 @@ void NistTest::OnBnClickedShowResult()
 	char freqfn[200];
 	sprintf(freqfn,"notepad.exe Component/Evaluation/experiments/%s/finalAnalysisReport.txt",generatorDir[option]);
 	::WinExec(freqfn,SW_SHOW);
+}
+
+
+void NistTest::ByteToBit(byte ByteData,int BitData[])
+{
+	byte temp = ByteData;
+	for(int i=7;i>=0;i--)
+	{
+		BitData[i] = temp % 2;
+		temp = temp / 2 ;
+	}
 }

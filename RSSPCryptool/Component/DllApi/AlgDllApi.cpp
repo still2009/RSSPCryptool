@@ -214,6 +214,16 @@ byte * AlgMng::RunCipher(int seed,int size){
 /***********************全局唯一DllMng对象定义*************************/
 DllMng dllMng;
 
+void ByteToBit(byte ByteData,int BitData[])
+{
+	byte temp = ByteData;
+	for(int i=7;i>=0;i--)
+	{
+		BitData[i] = temp % 2;
+		temp = temp / 2 ;
+	}
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	char text[16] = {'1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6'};
@@ -248,10 +258,22 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int seed=10;
 	int size=4;
+	int BitData[8];
 	CString a="BBS";
 	mng.setAlg(RNG,a);
 	output = mng.RunCipher(seed,size);
 	hex(output,size);
+	printf("\n");
+	FILE *fp;
+	if((fp = fopen("../RSSPCryptool/Component/Evaluation/RNG.txt","w"))==NULL)
+		printf("error\n");
+	for(int i=0;i<size;i++)
+	{
+		ByteToBit(output[i],BitData);
+		for(int j=0;j<8;j++)
+			printf("%d",BitData[j]);
+	}
+	fclose(fp);
 	printf("\n");
 
 	system("pause");
