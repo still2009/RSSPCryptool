@@ -1,1 +1,1 @@
-Component/AlgDll/;AES;5;Rabbit;SHA1;HMAC;BBS
+Component/AlgDll/;CAST256;Sosemanuk;SHA1;HMAC;BBS;OFB;

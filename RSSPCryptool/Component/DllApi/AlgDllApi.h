@@ -19,7 +19,7 @@ using namespace std;
 /************************************
 ************************************/
 enum CurrInfo{
-	DLL_DIR = 0,CURR_BLOCK,CURR_MODE,CURR_STREAM,CURR_HASH,CURR_MAC,CURR_RNG
+	DLL_DIR = 0,CURR_BLOCK,CURR_STREAM,CURR_HASH,CURR_MAC,CURR_RNG,CURR_MODE
 };
 enum Mode{
 	ECB = 1,CBC,CFB,OFB,CTR
@@ -105,6 +105,8 @@ public:
 	DllMng();
 	~DllMng();
 	
+	//更新配置文件内容
+	void UpdateCfgFile();
 	//对上层提供的服务
 	void * getAlgFun(CString name);//搜寻在所有dll中唯一的变量
 	CArray<HCIPHER> * getCiphers();
@@ -131,9 +133,9 @@ public:
 	AlgMng(DllMng * dllMng);
 	~AlgMng();
 
-	//获取算法配置（切换）信息
+	//获取、修改算法配置（切换）信息
 	CString GetCurrCfg(int type);
-
+	void SetCurrCfg(int type,CString value);
 	//算法调用相关
 	void setAlg(int type,CString name);
 	//密钥长度，分组长度，hash摘要长度
