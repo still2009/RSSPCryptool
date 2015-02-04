@@ -3,4 +3,13 @@ ________________________________________________________________________________
 		FILE = Component/Evaluation/RNG.txt		ALPHA = 0.0100
 ________________________________________________________________________________
 
-		BITSREAD = 10000 0s = 6100 1s = 3900
+		BITSREAD = 160 0s = 120 1s = 40
+		BITSREAD = 160 0s = 84 1s = 76
+		BITSREAD = 160 0s = 86 1s = 74
+		BITSREAD = 160 0s = 83 1s = 77
+		BITSREAD = 160 0s = 77 1s = 83
+		BITSREAD = 160 0s = 83 1s = 77
+		BITSREAD = 160 0s = 77 1s = 83
+		BITSREAD = 160 0s = 82 1s = 78
+		BITSREAD = 160 0s = 85 1s = 75
+		BITSREAD = 160 0s = 72 1s = 88

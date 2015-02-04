@@ -97,15 +97,15 @@ Manage::~Manage()
 void Manage::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_ALG_TYPE, cmb_AlgType);
-	DDX_Control(pDX, IDC_ALG_NAME, cmb_AlgName);
-	DDX_Control(pDX, IDC_ALG_MODE, cmb_AlgMode);
+	DDX_Control(pDX, IDC_ALG_TYPE_MNG, cmb_AlgType);
+	DDX_Control(pDX, IDC_ALG_NAME_MNG, cmb_AlgName);
+	DDX_Control(pDX, IDC_ALG_MODE_MNG, cmb_AlgMode);
 	DDX_Control(pDX, IDC_CURR_ALG, sts_CurAlg);
 }
 
 
 BEGIN_MESSAGE_MAP(Manage, CDialogEx)
-	ON_CBN_SELCHANGE(IDC_ALG_TYPE, &Manage::OnCbnSelchangeAlgType)
+	ON_CBN_SELCHANGE(IDC_ALG_TYPE_MNG, &Manage::OnCbnSelchangeAlgType)
 	ON_BN_CLICKED(IDC_BTN_SWITCH, &Manage::OnBnClickedBtnSwitch)
 END_MESSAGE_MAP()
 
@@ -126,10 +126,10 @@ void Manage::OnCbnSelchangeAlgType(){
 	//算法类型不是“分组密码算法时 不显示“密码模式”下拉条
 	if(sel != 0){
 		GetDlgItem(IDC_STATIC_MODE)->ShowWindow(SW_HIDE);
-		GetDlgItem(IDC_ALG_MODE)->ShowWindow(SW_HIDE);
+		GetDlgItem(IDC_ALG_MODE_MNG)->ShowWindow(SW_HIDE);
 	}else{
 		GetDlgItem(IDC_STATIC_MODE)->ShowWindow(SW_SHOW);
-		GetDlgItem(IDC_ALG_MODE)->ShowWindow(SW_SHOW);
+		GetDlgItem(IDC_ALG_MODE_MNG)->ShowWindow(SW_SHOW);
 	}
 
 	//填充AlgName下拉框

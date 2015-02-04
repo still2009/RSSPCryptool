@@ -55,4 +55,5 @@ public:
 	void ResultFile();
 	afx_msg void OnBnClickedShowResult();
 	CString m_AlgRNG;
+	void ByteToBit(byte ByteData,int BitData[]);
 };
