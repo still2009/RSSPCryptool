@@ -1,7 +1,7 @@
 #pragma once
 #include "afxwin.h"
 #include "test_tchart.h"
-#include "f:\srtpworkspace\rsspcryptool\rsspcryptool\test_tchart.h"
+#include "test_tchart.h"
 #include "CSeries.h" 
 #include "CAxis.h"
 #include "CAxes.h"

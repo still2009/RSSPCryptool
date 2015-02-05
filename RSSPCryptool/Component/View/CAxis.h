@@ -1,6 +1,6 @@
 // 从类型库向导中用“添加类”创建的计算机生成的 IDispatch 包装类
 
-#import "D:\\TeeChart Pro v5 ActiveX Control\\TeeChart5.ocx" no_namespace
+#import "TeeChart5.ocx" no_namespace
 // CAxis 包装类
 
 class CAxis : public COleDispatchDriver
