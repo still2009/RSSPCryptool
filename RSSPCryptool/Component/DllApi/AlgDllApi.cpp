@@ -19,19 +19,28 @@ void DllMng::getCfgList(){
 	if(cfgFile.is_open()){
 		while(!cfgFile.eof()){
 			cfgFile.read(buff+count,1);
-			//最后一个分号后面什么都没有
+			//末尾一定要添加分号
 			if(buff[count] == ';'){
 				cfgList.Add(CString(buff,count));
 				count = -1;
 			}
 			count++;
 		}
-		cfgList.Add(CString(buff,count-1));
+		//cfgList.Add(CString(buff,count-1));
 	}
 	cfgFile.close();
+}
+
+void DllMng::UpdateCfgFile(){
+	CString str;
 	for(int i = 0;i < cfgList.GetSize();i++){
-		cout<<cfgList.GetAt(i)<<"--";
+		str.Append(cfgList.GetAt(i));
+		str.AppendChar(';');
 	}
+	char *buff = str.GetBuffer();
+	cfgFile.open("Config.txt",ios::out);
+	cfgFile.write(buff,str.GetLength());
+	cfgFile.close();
 }
 
 void DllMng::LoadDlls(){
@@ -128,6 +137,18 @@ CString AlgMng::GetCurrCfg(int curr_type){
 	return dllMng->cfgList.GetAt(curr_type);
 }
 
+void AlgMng::SetCurrCfg(int type,CString value){
+	if(type == CURR_MODE){
+		if(value.Compare("1") == 0) dllMng->cfgList.SetAt(CURR_MODE,"ECB");
+		else if(value.Compare("2") == 0) dllMng->cfgList.SetAt(CURR_MODE,"CBC");
+		else if(value.Compare("3") == 0) dllMng->cfgList.SetAt(CURR_MODE,"CFB");
+		else if(value.Compare("4") == 0) dllMng->cfgList.SetAt(CURR_MODE,"OFB");
+		else if(value.Compare("5") == 0) dllMng->cfgList.SetAt(CURR_MODE,"CTR");
+		else dllMng->cfgList.SetAt(CURR_MODE,value);
+	}else dllMng->cfgList.SetAt(type,value);
+	dllMng->UpdateCfgFile();
+}
+
 //设定马上要使用的算法
 void AlgMng::setAlg(int type,CString name){
 	for(int i = 0;i < info->GetSize();i++){
@@ -214,6 +235,16 @@ byte * AlgMng::RunCipher(int seed,int size){
 /***********************全局唯一DllMng对象定义*************************/
 DllMng dllMng;
 
+void ByteToBit(byte ByteData,int BitData[])
+{
+	byte temp = ByteData;
+	for(int i=7;i>=0;i--)
+	{
+		BitData[i] = temp % 2;
+		temp = temp / 2 ;
+	}
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	char text[16] = {'1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6'};
@@ -248,12 +279,31 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int seed=10;
 	int size=4;
+	int BitData[8];
 	CString a="BBS";
 	mng.setAlg(RNG,a);
 	output = mng.RunCipher(seed,size);
 	hex(output,size);
 	printf("\n");
+	FILE *fp;
+	if((fp = fopen("../RSSPCryptool/Component/Evaluation/RNG.txt","w"))==NULL)
+		printf("error\n");
+	for(int i=0;i<size;i++)
+	{
+		ByteToBit(output[i],BitData);
+		for(int j=0;j<8;j++)
+			printf("%d",BitData[j]);
+	}
+	fclose(fp);
+	printf("\n");
 
+	//cfg文件相关的操作
+	for(int i = 0;i <= 6;i++){
+		cout<<mng.GetCurrCfg(i)<<"--";
+	}
+	cout<<endl;
+
+	mng.SetCurrCfg(CURR_MODE,"CFB");
 	system("pause");
 	return 0;
 

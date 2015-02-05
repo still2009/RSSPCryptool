@@ -1,1 +1,1 @@
-Component/AlgDll/;AES;5;Rabbit;SHA1;HMAC;BBS
+Component/AlgDll/;AES;PanamaCipher;SHA512;HMAC_SHA1;LCG;ECB;
