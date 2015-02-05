@@ -116,8 +116,14 @@
     <ClInclude Include="Component\Evaluation\matrix.h" />
     <ClInclude Include="Component\Evaluation\stat_fncs.h" />
     <ClInclude Include="Component\Evaluation\utilities.h" />
+    <ClInclude Include="Component\Logic\Sensitivity.h" />
     <ClInclude Include="Component\View\AlgTestDlg.h" />
     <ClInclude Include="Component\Logic\Nist_access.h" />
+    <ClInclude Include="Component\View\CAxes.h" />
+    <ClInclude Include="Component\View\CAxis.h" />
+    <ClInclude Include="Component\View\CLegend.h" />
+    <ClInclude Include="Component\View\CSeries.h" />
+    <ClInclude Include="Component\View\CTChart.h" />
     <ClInclude Include="Component\View\Manage.h" />
     <ClInclude Include="Component\View\NistTest.h" />
     <ClInclude Include="Component\View\RSSPCryptool.h" />
@@ -126,6 +132,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="test_tchart.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\DllApi\AlgDllApi.cpp">
@@ -197,6 +204,7 @@
     <ClCompile Include="Component\Evaluation\utilities.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Component\Logic\Sensitivity.cpp" />
     <ClCompile Include="Component\View\AlgTestDlg.cpp" />
     <ClCompile Include="Component\Logic\Nist_access.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -211,13 +219,14 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="test_tchart.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="RSSPCryptool.rc" />
+      <UserProperties RESOURCE_FILE="RSSPCryptool.rc" _x007B_B6C10489-FB89-11D4-93C9-006008A7EED4_x007D_="CTest_tchart" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

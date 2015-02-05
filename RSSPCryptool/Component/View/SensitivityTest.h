@@ -1,5 +1,12 @@
 #pragma once
 #include "afxwin.h"
+#include "test_tchart.h"
+#include "f:\srtpworkspace\rsspcryptool\rsspcryptool\test_tchart.h"
+#include "CSeries.h" 
+#include "CAxis.h"
+#include "CAxes.h"
+#include "CLegend.h"
+#include "CTChart.h"
 
 
 // SensitivityTest ¶Ô»°¿ò
@@ -31,4 +38,11 @@ public:
 	CButton m_Report;
 	CComboBox m_Name;
 	CComboBox m_Type;
+	double* averageData;
+	double* varianceData;
+	double average;
+	double variance;
+	afx_msg void OnBnClickedTest();
+	CTest_tchart m_TestTChart;
+	afx_msg void OnBnClickedReport();
 };

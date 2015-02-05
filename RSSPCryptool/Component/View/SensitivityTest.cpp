@@ -6,6 +6,7 @@
 #include "SensitivityTest.h"
 #include "afxdialogex.h"
 #include "Component\DllApi\AlgDllApi.h"
+#include "Component\Logic\Sensitivity.h"
 
 
 // SensitivityTest 对话框
@@ -41,11 +42,14 @@ void SensitivityTest::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_REPORT, m_Report);
 	DDX_Control(pDX, IDC_ALG_NAME, m_Name);
 	DDX_Control(pDX, IDC_ALG_TYPE, m_Type);
+	DDX_Control(pDX, IDC_TEST_TCHART, m_TestTChart);
 }
 
 
 BEGIN_MESSAGE_MAP(SensitivityTest, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_ALG_TYPE, &SensitivityTest::OnCbnSelchangeAlgType)
+	ON_BN_CLICKED(IDC_TEST, &SensitivityTest::OnBnClickedTest)
+	ON_BN_CLICKED(IDC_REPORT, &SensitivityTest::OnBnClickedReport)
 END_MESSAGE_MAP()
 
 
@@ -77,3 +81,53 @@ void SensitivityTest::OnCbnSelchangeAlgType()
 	}
 }
 
+
+
+void SensitivityTest::OnBnClickedTest()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	UpdateData(TRUE);
+	if(!(m_AlgType&&m_AlgName&&m_AlgMode&&m_TestType&&m_TextLen&&m_TestTimes)) 
+	{
+		AfxMessageBox("参数未设置或不合法！");
+		return;
+	}
+	averageData = new double[m_TestTimes];
+	varianceData = new double[m_TestTimes];
+	AverageData(m_AlgType,m_AlgName,m_AlgMode,m_TestType,m_TextLen,m_TestTimes,averageData);
+	average=Average(averageData,m_TestTimes);
+	VarianceData(averageData,varianceData,m_TestTimes);
+	variance=Variance(varianceData,m_TestTimes);
+
+	CSeries lineSeries1 = (CSeries)m_TestTChart.Series(0);
+	CSeries lineSeries2 = (CSeries)m_TestTChart.Series(1);
+	CSeries lineSeries3 = (CSeries)m_TestTChart.Series(2);
+	lineSeries1.Clear();
+	lineSeries2.Clear();
+	lineSeries3.Clear();
+	for(int i=0;i<m_TestTimes;i++)
+    {
+        lineSeries1.AddXY((double)i,averageData[i],NULL,0);
+        lineSeries2.AddXY((double)i,varianceData[i],NULL,0);
+        lineSeries3.AddXY((double)i,0.5,NULL,0);
+    }
+
+	lineSeries1.put_Color(RGB(5,187,92));  //均值为绿色
+	lineSeries2.put_Color(RGB(0,0,255));  //方差为蓝色
+	lineSeries3.put_Color(RGB(255,0,0));  //0.5基准线为红色
+	CString Temp1,Temp2;
+	Temp1.Format("%lf",average);
+	Temp2.Format("%lf",variance);
+	CDialog::GetDlgItem(IDC_RESULT_STATIC)->SetWindowText("Average --- "+ Temp1+ "    Variance ---"+ Temp2);
+	AfxMessageBox("测试完成！");
+	UpdateData(FALSE);
+}
+
+
+void SensitivityTest::OnBnClickedReport()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	//UpdateData(TRUE);
+	GenerateReport(m_AlgType,m_AlgName,m_AlgMode,m_TestType,m_TextLen,m_TestTimes,averageData,average,variance);
+	::WinExec("notepad SensitivityTestReport.txt",SW_SHOW);
+}

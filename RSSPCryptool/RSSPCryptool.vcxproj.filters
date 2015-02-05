@@ -123,6 +123,27 @@
     <ClInclude Include="Component\View\AlgTestDlg.h">
       <Filter>Component\View\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Component\Logic\Sensitivity.h">
+      <Filter>Component\Logic\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\CAxes.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\CAxis.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\CLegend.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\CSeries.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\View\CTChart.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="test_tchart.h">
+      <Filter>AutoGen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\RSSPCryptool.cpp">
@@ -218,5 +239,9 @@
     <ClCompile Include="Component\View\AlgTestDlg.cpp">
       <Filter>Component\View</Filter>
     </ClCompile>
+    <ClCompile Include="Component\Logic\Sensitivity.cpp">
+      <Filter>Component\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="test_tchart.cpp" />
   </ItemGroup>
 </Project>
