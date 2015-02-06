@@ -41,6 +41,7 @@
     <LinkIncremental>
     </LinkIncremental>
     <OutDir>..\RSSPCryptool\Component\AlgDll\</OutDir>
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

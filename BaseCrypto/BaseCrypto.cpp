@@ -90,12 +90,7 @@ bool Use_MAC(byte *key,int key_len,byte *msg,int msg_len,byte *mac,int mac_len,b
 	return true;
 }
 
-/************************库信息说明*****************************/
-
-extern const int DLL_ALGORITHM_TYPE = 0;
 /************************分组密码算法*****************************/
-extern const int B_AMOUNT = 21;
-
 bool Use_Blowfish(_Block_Cipher_Parameters_){B(Blowfish)}
 bool Use_Camellia(_Block_Cipher_Parameters_){B(Camellia)}
 bool Use_CAST256(_Block_Cipher_Parameters_){B(CAST256)}
@@ -121,8 +116,6 @@ bool Use_Square(_Block_Cipher_Parameters_){B(Square)}
 bool Use_ThreeWay(_Block_Cipher_Parameters_){B(ThreeWay)}
 
 /************************流密码算法*****************************/
-extern const int S_AMOUNT = 6;
-
 bool Use_Sosemanuk(_Stream_Cipher_Parameters_){S(Sosemanuk)}
 bool Use_Salsa20(_Stream_Cipher_Parameters_){S(Salsa20)}
 bool Use_XSalsa20(_Stream_Cipher_Parameters_){S(XSalsa20)}
@@ -150,8 +143,6 @@ bool Use_RC4(_Stream_Cipher_Parameters_){
 }
 
 /************************HASH算法*****************************/
-extern const int H_AMOUNT = 18;
-
 bool Use_MD2(_Hash_Parameters_){H(Weak::MD2)}
 bool Use_MD4(_Hash_Parameters_){H(Weak::MD4)}
 bool Use_MD5(_Hash_Parameters_){H(Weak::MD5)}
@@ -172,8 +163,6 @@ bool Use_RIPEMD128(_Hash_Parameters_){H(RIPEMD128)}
 bool Use_RIPEMD256(_Hash_Parameters_){H(RIPEMD256)}
 
 /************************消息认证算法*****************************/
-extern const int M_AMOUNT = 6;
-
 bool Use_CBC_MAC_AES(_MAC_Parameters_){M(CBC_MAC<AES>)}
 bool Use_CMAC_AES(_MAC_Parameters_){M(CMAC<AES>)}
 bool Use_DMAC_AES(_MAC_Parameters_){M(DMAC<AES>)}
@@ -182,8 +171,6 @@ bool Use_VMAC_AES(_MAC_Parameters_){M(VMAC<AES>)}
 bool Use_TTMAC(_MAC_Parameters_){M(TTMAC)}
 
 /************************随机数生成器*****************************/
-extern const int R_AMOUNT = 2;
-
 bool Use_BBS(_RNG_Parameters_){
 	BlumBlumShub rng(383,503,seed);
 	rng.GenerateBlock(input,size);
@@ -195,8 +182,12 @@ bool Use_LCG(_RNG_Parameters_){
 	return input == NULL ? false : true;
 }
 
-
+/************************库信息说明*****************************/
+//其他数值分别是BLOCK,STREAM,HASH,MAC,RNG
+extern const int DLL_ALGORITHM_TYPE = 0;
 /************************算法信息*****************************/
+//数组AMOUNT中第一个数为分组密码算法的数量，以后依次为流密码，HASH,MAC,RNG的数量
+extern const int AMOUNTS[] = {21,6,18,6,2};
 extern const Cipher CIPHERS[] = {
 	BlockInfo("AES",KL(AES),BS(AES)),BlockInfo("Blowfish",KL(Blowfish),BS(Blowfish)),
 	BlockInfo("Camellia",KL(Camellia),BS(Camellia)),BlockInfo("CAST256",KL(CAST256),BS(CAST256)),

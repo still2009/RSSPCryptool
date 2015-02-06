@@ -19,3 +19,6 @@
 2>添加对变量的定义
 3>在链接库目录设置下添加所使用到的lib文件等库
 ERROR2005问题 详细见ERROR2005错误分析txt
+
+⑤ Failed to write the updated manifest to the resource of file生成DLL文件是的一个错误，可能是由于更改了输出目录导致的，
+解决方案：在项目属性中，链接器设置项，清单文件设置项选择“不生成清单文件”

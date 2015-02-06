@@ -42,4 +42,5 @@ public:
 	CTabCtrl m_tab;
 	afx_msg void OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnAboutMenu();
+	afx_msg void OnDirSet();
 };

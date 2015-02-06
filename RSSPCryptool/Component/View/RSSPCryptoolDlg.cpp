@@ -6,6 +6,7 @@
 #include "RSSPCryptool.h"
 #include "RSSPCryptoolDlg.h"
 #include "afxdialogex.h"
+#include "DllDirSetDlg.h"
 
 
 
@@ -68,6 +69,7 @@ BEGIN_MESSAGE_MAP(CRSSPCryptoolDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB, &CRSSPCryptoolDlg::OnTcnSelchangeTab)
 	ON_COMMAND(ID_ABOUT_MENU, &CRSSPCryptoolDlg::OnAboutMenu)
+	ON_COMMAND(ID_DIR_SET, &CRSSPCryptoolDlg::OnDirSet)
 END_MESSAGE_MAP()
 
 
@@ -211,9 +213,14 @@ void CRSSPCryptoolDlg::OnTcnSelchangeTab(NMHDR *pNMHDR, LRESULT *pResult)
 }
 
 
-void CRSSPCryptoolDlg::OnAboutMenu()
-{
-	//显示”关于“对话框
+void CRSSPCryptoolDlg::OnAboutMenu(){
 	CAboutDlg m_aboutDlg;
 	m_aboutDlg.DoModal();
+}
+
+
+void CRSSPCryptoolDlg::OnDirSet(){
+	DllDirSetDlg dlg;
+	dlg.mngDlg = &m_manageDlg;
+	dlg.DoModal();
 }

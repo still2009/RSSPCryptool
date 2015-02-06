@@ -1,1 +1,1 @@
-Component/AlgDll/;AES;PanamaCipher;SHA384;HMAC_SHA1;LCG;ECB;
+B:\workspace\VS2010\RSSPCryptool\RSSPCryptool\Component\AlgDll\;SKIPJACK;Sosemanuk;SHA384;HMAC_SHA1;LCG;ECB;

@@ -50,37 +50,6 @@ typedef bool (*pHashFuction)(byte *,byte *,int);
 typedef bool (*pMacConstructor)(byte *,int,byte *,int,byte *,int,byte *);
 typedef bool (*pRng)(int seed,int size,byte *);
 
-
-
-const CString B[] = {
-	"Blowfish","Camellia","CAST256",
-	"DES","IDEA","MARS",
-	"RC5","RC6","SEED",
-	"Serpent","SHACAL2","SKIPJACK",
-	"TEA","Twofish","XTEA",
-	"DES_EDE3","GOST","SHARK",
-	"Square","ThreeWay","AES"
-};
-const CString S[] = {
-	"Sosemanuk","Salsa20","XSalsa20",
-	"SEAL","PanamaCipher","RC4"
-};
-const CString H[] = {
-	"MD2","MD4","MD5",
-	"SHA1","SHA256","SHA224",
-	"SHA512","SHA384","SHA3_224",
-	"SHA3_256","SHA3_384","SHA3_512",
-	"Tiger","RIPEMD160","RIPEMD320",
-	"RIPEMD128","RIPEMD256","Whirlpool"
-};
-const CString M[] = {
-	"CBC_MAC_AES","CMAC_AES","DMAC_AES",
-	"HMAC_SHA1","VMAC_AES","TTMAC"
-};
-const CString R[] = {
-	"BBS","LCG"
-};
-
 //算法信息一次性全部加载。
 //配置文件设定：Config.txt
 //算法与Dll文件映射关系（工作量小，所以使用动态判断）
@@ -93,23 +62,28 @@ private:
 	CArray<HINSTANCE> handles;//所有dll的句柄数组
 	CArray<HCIPHER> ciphers;//所有算法信息
 	
-	//Dll的操作
-	void LoadDlls();//获得所有句柄
-	void FreeDlls();//释放所有句柄
-
-	void getAllCipher();//获取所有算法库中的所有算法信息结构体Cipher的指针
-	void getCfgList();//获取配置文件信息
 public:
 	CStringArray cfgList;//所有配置项
 
 	DllMng();
 	~DllMng();
 	
+	//Dll的操作
+	void LoadDlls();//获得所有句柄
+	void FreeDlls();//释放所有句柄
+
+	void getAllCipher();//获取所有算法库中的所有算法信息结构体Cipher的指针
+	void getCfgList();//获取配置文件信息
+
 	//更新配置文件内容
 	void UpdateCfgFile();
 	//对上层提供的服务
 	void * getAlgFun(CString name);//搜寻在所有dll中唯一的变量
 	CArray<HCIPHER> * getCiphers();
+
+	//库文件的管理
+	bool addDll(CString dllName);
+	bool checkDll(CString dllName);
 };
 
 

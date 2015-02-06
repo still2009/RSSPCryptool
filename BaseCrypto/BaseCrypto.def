@@ -2,14 +2,7 @@
 LIBRARY BaseCrypto
 
 EXPORTS
-
-DLL_ALGORITHM_TYPE DATA
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;分组密码算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;;静态变量
-B_AMOUNT DATA
-
 ;;;;;;接口函数
 Use_Blowfish
 Use_Camellia
@@ -38,9 +31,6 @@ Use_Square
 Use_ThreeWay
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;流密码算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;静态变量
-S_AMOUNT DATA
-
 ;;;;接口函数
 Use_Sosemanuk
 Use_Salsa20
@@ -52,9 +42,6 @@ Use_PanamaCipher
 Use_RC4
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;HASH算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;静态常量
-H_AMOUNT DATA
-
 ;;;;调用接口
 Use_MD2
 Use_MD4
@@ -76,9 +63,6 @@ Use_RIPEMD128
 Use_RIPEMD256
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;消息认证算法;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;静态常量
-M_AMOUNT DATA
-
 ;;;;调用接口
 Use_CBC_MAC_AES
 Use_CMAC_AES
@@ -88,12 +72,11 @@ Use_VMAC_AES
 Use_TTMAC
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;随机数生成器;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;静态常量
-R_AMOUNT DATA
-
 ;;;;调用接口
 Use_BBS
 Use_LCG
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;算法信息;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+DLL_ALGORITHM_TYPE DATA
+AMOUNTS DATA
 CIPHERS DATA

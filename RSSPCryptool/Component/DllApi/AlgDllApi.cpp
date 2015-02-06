@@ -13,7 +13,7 @@ DllMng::~DllMng(){
 }
 
 void DllMng::getCfgList(){
-	char buff[50];
+	char buff[100];
 	int count = 0;
 	cfgFile.open("Config.txt",ios::in);
 	if(cfgFile.is_open()){
@@ -26,7 +26,6 @@ void DllMng::getCfgList(){
 			}
 			count++;
 		}
-		//cfgList.Add(CString(buff,count-1));
 	}
 	cfgFile.close();
 }
@@ -44,6 +43,8 @@ void DllMng::UpdateCfgFile(){
 }
 
 void DllMng::LoadDlls(){
+	//先清空原来的列表
+	handles.RemoveAll();
 	CString dir(cfgList.GetAt(DLL_DIR));
 	dir.Append(_T("*.dll"));
 
@@ -53,8 +54,9 @@ void DllMng::LoadDlls(){
 
 		dir = cfgList.GetAt(DLL_DIR);
 		dir.Append(finder.GetFileName());
-
-		handles.Add(DLL_OPEN(dir));
+		//判断是否为NULL
+		HINSTANCE inst = DLL_OPEN(dir);
+		if(inst != NULL) handles.Add(inst);
 	}
 	for(int i = 0;i < handles.GetSize();i++){
 		cout<<handles.GetAt(i)<<endl;
@@ -79,18 +81,21 @@ void * DllMng::getAlgFun(CString name){
 }
 
 void DllMng::getAllCipher(){
+	//先清空原来的列表
+	ciphers.RemoveAll();
 	Cipher * head = NULL;
 
 	for(int i = 0;i < handles.GetSize();i++){
 		head = (Cipher *)DLL_GET(handles.GetAt(i),"CIPHERS");
-		
-		int amount = *(int *)DLL_GET(handles.GetAt(i),"B_AMOUNT");
-		amount += *(int *)DLL_GET(handles.GetAt(i),"S_AMOUNT");
-		amount += *(int *)DLL_GET(handles.GetAt(i),"H_AMOUNT");
-		amount += *(int *)DLL_GET(handles.GetAt(i),"M_AMOUNT");
-		amount += *(int *)DLL_GET(handles.GetAt(i),"R_AMOUNT");
+		//获取算法总数量
+		int *amounts = (int *)DLL_GET(handles.GetAt(i),"AMOUNTS");
+		if(amounts == NULL) return;
 
-		for(int j = 0;j < amount;j++) ciphers.Add(head + j);
+		int alg_amount = 0;
+		for(int k = 0;k < 5;k++){
+			alg_amount += amounts[k];
+		}
+		for(int j = 0;j < alg_amount;j++) ciphers.Add(head + j);
 	}
 }
 
@@ -99,6 +104,59 @@ CArray<HCIPHER> * DllMng::getCiphers(){
 	return &ciphers;
 }
 
+bool DllMng::addDll(CString dllName){
+	//路径名转换为文件名
+	CString fileName = dllName.Mid(dllName.ReverseFind('\\')+1);
+	CString newDll(cfgList.GetAt(DLL_DIR));
+	newDll.Append("\\"+fileName);
+
+	CString test = cfgList.GetAt(DLL_DIR);
+	return CopyFile(dllName,newDll,true);
+}
+
+bool DllMng::checkDll(CString dllName){
+	HINSTANCE dll = DLL_OPEN(dllName);
+	void *point = NULL;
+	int type = 0;
+	if(dll == NULL) return false;
+
+	//获取DLL库的类型
+	point = DLL_GET(dll,"DLL_ALGORITHM_TYPE");
+	if(point == NULL) return false;
+	type = *(int *)point;
+
+	//获取算法信息结构体数组CIPHERS
+	point = DLL_GET(dll,"CIPHERS");
+	if(point == NULL) return false;
+
+	//获取没种类型的算法数量
+	int * amounts = (int *)DLL_GET(dll,"AMOUNTS");
+	if(amounts == NULL) return false;
+
+	switch(type){
+	case BLOCK:
+		if(amounts[0] > 0 && amounts[1] == amounts[2] == amounts[3] == amounts[4] == 0) return true;
+		else return false;
+	case STREAM:
+		if(amounts[1] > 0 && amounts[0] == amounts[2] == amounts[3] == amounts[4] == 0) return true;
+		else return false;
+	case HASH:
+		if(amounts[2] > 0 && amounts[0] == amounts[1] == amounts[3] == amounts[4] == 0) return true;
+		else return false;
+	case MAC:
+		if(amounts[3] > 0 && amounts[0] == amounts[1] == amounts[2] == amounts[4] == 0) return true;
+		else return false;
+	case RNG:
+		if(amounts[4] > 0 && amounts[0] == amounts[1] == amounts[2] == amounts[3] == 0) return true;
+		else return false;
+	case 0:
+		for(int k = 0;k < 5;k++){
+			if(amounts[k] <= 0) return false;
+		}
+		return true;
+	default:return false;
+	}
+}
 /***********************AlgMng的实现******************************/
 AlgMng::AlgMng(DllMng * dllMng){
 	this->dllMng = dllMng;

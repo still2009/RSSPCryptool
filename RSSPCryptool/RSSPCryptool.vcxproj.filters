@@ -144,6 +144,9 @@
     <ClInclude Include="test_tchart.h">
       <Filter>AutoGen</Filter>
     </ClInclude>
+    <ClInclude Include="Component\View\DllDirSetDlg.h">
+      <Filter>Component\View\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component\View\RSSPCryptool.cpp">
@@ -243,5 +246,8 @@
       <Filter>Component\Logic</Filter>
     </ClCompile>
     <ClCompile Include="test_tchart.cpp" />
+    <ClCompile Include="Component\View\DllDirSetDlg.cpp">
+      <Filter>Component\View</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

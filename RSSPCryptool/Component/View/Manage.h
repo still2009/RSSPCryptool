@@ -1,6 +1,7 @@
 #pragma once
 #include "afxwin.h"
 #include "Component/DllApi/AlgDllApi.h"
+#include "afxcmn.h"
 
 // Manage ¶Ô»°¿ò
 
@@ -28,18 +29,22 @@ public:
 	CString curAlgName;
 	CString curAlgMode;
 	CStatic sts_CurAlg;
-
+	CListCtrl lst_AlgInfo;
+	CString strDllName;
 
 	void initCmbAlgType();
 	void initCmbAlgMode();
 	void initListControl();
 	void showCmbAlgName(int mode);
 	void showCurInfo();
+	void showAlgInfoLst(int type);
 
 	int modeStr2Int(CString strMode);
 	int typeStr2Int(CString strType);
+	CString int2CString(int num);
 
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBtnSwitch();
 	afx_msg void OnCbnSelchangeAlgType();
+	afx_msg void OnBnClickedAddDll();
 };
