@@ -344,7 +344,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	hex(output,size);
 	printf("\n");
 	FILE *fp;
-	if((fp = fopen("../RSSPCryptool/Component/Evaluation/RNG.txt","w"))==NULL)
+	if((fp = fopen("../RSSPCryptool/experiments/RNG.txt","w"))==NULL)
 		printf("error\n");
 	for(int i=0;i<size;i++)
 	{
