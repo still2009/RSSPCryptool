@@ -28,7 +28,7 @@ void
 	for ( i=0; i<MAXFILESPERMITTEDFORPARTITION; i++ )
 		s[i] = (char*)calloc(200, sizeof(char));
 
-	sprintf(resultsDir, "Component/Evaluation/experiments/%s/%s/results.txt", generatorDir[option], testNames[testNameID]);
+	sprintf(resultsDir, "experiments/%s/%s/results.txt", generatorDir[option], testNames[testNameID]);
 
 	if ( (fp[numOfFiles] = fopen(resultsDir, "r")) == NULL ) {
 		printf("%s", resultsDir);
@@ -38,11 +38,11 @@ void
 
 	for ( i=0; i<numOfFiles; i++ ) {
 		if ( i < 10 )
-			sprintf(s[i], "Component/Evaluation/experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[testNameID], i+1);
 		else if (i < 100)
-			sprintf(s[i], "Component/Evaluation/experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[testNameID], i+1);
 		else
-			sprintf(s[i], "Component/Evaluation/experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[testNameID], i+1);
+			sprintf(s[i], "experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[testNameID], i+1);
 	}
 	numread = 0;
 	m = numOfFiles/20;
@@ -126,11 +126,11 @@ void
 						numOfFiles = 2;
 					for ( k=0; k<numOfFiles; k++ ) {
 						if ( k < 10 )
-							sprintf(s, "Component/Evaluation/experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[i], k+1);
+							sprintf(s, "experiments/%s/%s/data%1d.txt", generatorDir[option], testNames[i], k+1);
 						else if ( k < 100 )
-							sprintf(s, "Component/Evaluation/experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[i], k+1);
+							sprintf(s, "experiments/%s/%s/data%2d.txt", generatorDir[option], testNames[i], k+1);
 						else
-							sprintf(s, "Component/Evaluation/experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[i], k+1);
+							sprintf(s, "experiments/%s/%s/data%3d.txt", generatorDir[option], testNames[i], k+1);
 						if ( (i == TEST_RND_EXCURSION) || (i == TEST_RND_EXCURSION_VAR) ) 
 							randomExcursionSampleSize = computeMetrics(s,i);
 						else
@@ -138,7 +138,7 @@ void
 					}
 			}
 			else {
-				sprintf(s, "Component/Evaluation/experiments/%s/%s/results.txt", generatorDir[option], testNames[i]);
+				sprintf(s, "experiments/%s/%s/results.txt", generatorDir[option], testNames[i]);
 				generalSampleSize = computeMetrics(s,i);
 			}
 		}

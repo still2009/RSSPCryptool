@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 B:\workspace\VS2010\RSSPCryptool\RSSPCryptool\Component\AlgDll\;AES;Sosemanuk;Whirlpool;HMAC_SHA1;LCG;CFB;
+=======
+E:\GitProject\rsspcryptool\RSSPCryptool\Component\AlgDll\;SKIPJACK;Sosemanuk;SHA384;HMAC_SHA1;LCG;ECB;
+>>>>>>> csdn/master

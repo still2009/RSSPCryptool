@@ -1,0 +1,15 @@
+________________________________________________________________________________
+
+		FILE = Quadratic-Congruential-2		ALPHA = 0.0100
+________________________________________________________________________________
+
+		BITSREAD = 1 0s = 0 1s = 1
+		BITSREAD = 1 0s = 1 1s = 0
+		BITSREAD = 1 0s = 1 1s = 0
+		BITSREAD = 1 0s = 0 1s = 1
+		BITSREAD = 1 0s = 0 1s = 1
+		BITSREAD = 1 0s = 0 1s = 1
+		BITSREAD = 1 0s = 1 1s = 0
+		BITSREAD = 1 0s = 1 1s = 0
+		BITSREAD = 1 0s = 0 1s = 1
+		BITSREAD = 1 0s = 1 1s = 0

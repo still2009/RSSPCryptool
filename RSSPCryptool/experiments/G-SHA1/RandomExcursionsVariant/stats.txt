@@ -1,0 +1,50 @@
+			RANDOM EXCURSIONS VARIANT TEST
+		--------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		--------------------------------------------
+		(a) Number Of Cycles (J) = 721
+		(b) Sequence Length (n)  = 1000010
+		--------------------------------------------
+SUCCESS		(x = -9) Total visits =  684; p-value = 0.813187
+SUCCESS		(x = -8) Total visits =  650; p-value = 0.629267
+SUCCESS		(x = -7) Total visits =  655; p-value = 0.629772
+SUCCESS		(x = -6) Total visits =  683; p-value = 0.762865
+SUCCESS		(x = -5) Total visits =  703; p-value = 0.874453
+SUCCESS		(x = -4) Total visits =  650; p-value = 0.479761
+SUCCESS		(x = -3) Total visits =  606; p-value = 0.175625
+SUCCESS		(x = -2) Total visits =  642; p-value = 0.229707
+SUCCESS		(x = -1) Total visits =  697; p-value = 0.527376
+SUCCESS		(x =  1) Total visits =  693; p-value = 0.460908
+SUCCESS		(x =  2) Total visits =  651; p-value = 0.287203
+SUCCESS		(x =  3) Total visits =  636; p-value = 0.316808
+SUCCESS		(x =  4) Total visits =  663; p-value = 0.563741
+SUCCESS		(x =  5) Total visits =  647; p-value = 0.515968
+SUCCESS		(x =  6) Total visits =  620; p-value = 0.422587
+SUCCESS		(x =  7) Total visits =  624; p-value = 0.478658
+SUCCESS		(x =  8) Total visits =  633; p-value = 0.549607
+SUCCESS		(x =  9) Total visits =  628; p-value = 0.552522
+
+			RANDOM EXCURSIONS VARIANT TEST
+		--------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		--------------------------------------------
+		(a) Number Of Cycles (J) = 100
+		(b) Sequence Length (n)  = 1000010
+		--------------------------------------------
+
+		WARNING:  TEST NOT APPLICABLE.  THERE ARE AN
+			  INSUFFICIENT NUMBER OF CYCLES.
+		---------------------------------------------
+
+			RANDOM EXCURSIONS VARIANT TEST
+		--------------------------------------------
+		COMPUTATIONAL INFORMATION:
+		--------------------------------------------
+		(a) Number Of Cycles (J) = 89
+		(b) Sequence Length (n)  = 1000010
+		--------------------------------------------
+
+		WARNING:  TEST NOT APPLICABLE.  THERE ARE AN
+			  INSUFFICIENT NUMBER OF CYCLES.
+		---------------------------------------------
+

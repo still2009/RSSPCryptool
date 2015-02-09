@@ -1,10 +1,11 @@
 ------------------------------------------------------------------------------
 RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES
 ------------------------------------------------------------------------------
-   generator is <Component/Evaluation/RNG.txt>
+   generator is <experiments/RNG.txt>
 ------------------------------------------------------------------------------
  C1  C2  C3  C4  C5  C6  C7  C8  C9 C10  P-VALUE  PROPORTION  STATISTICAL TEST
 ------------------------------------------------------------------------------
+<<<<<<< HEAD
  11  11  20   7   8   5   8  10   9  11  0.102526     97/100     Frequency
   9  12   7   9  13  11   6  12   8  13  0.759756     98/100     BlockFrequency
  12  11  13   9   6   8   9  14   9   9  0.798139     97/100     CumulativeSums
@@ -168,14 +169,22 @@ RESULTS FOR THE UNIFORMITY OF P-VALUES AND THE PROPORTION OF PASSING SEQUENCES
   0   0   0   0   0   0   0   0   0   0     ----     ------     RandomExcursions
   0   0   0   0   0   0   0   0   0   0     ----     ------     RandomExcursions
   0   0   0   0   0   0   0   0   0   0     ----     ------     RandomExcursions
+=======
+  0   0   0   0   0   0   0   0   0   1     ----       1/1       BlockFrequency
+>>>>>>> csdn/master
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 The minimum pass rate for each statistical test with the exception of the
+<<<<<<< HEAD
 random excursion (variant) test is approximately = 96 for a
 sample size = 100 binary sequences.
 
 The minimum pass rate for the random excursion (variant) test is undefined.
+=======
+random excursion (variant) test is approximately = 0 for a
+sample size = 1 binary sequences.
+>>>>>>> csdn/master
 
 For further guidelines construct a probability table using the MAPLE program
 provided in the addendum section of the documentation.

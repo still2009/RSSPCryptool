@@ -116,7 +116,7 @@ void NistTest::OnBnClickedRngGenerate()
 	int seed;
 	FILE *fp;
 	int BitData[8];
-	if((fp=fopen("Component/Evaluation/RNG.txt","w"))==NULL)
+	if((fp=fopen("experiments/RNG.txt","w"))==NULL)
 		AfxMessageBox(_T("打开文件失败"));
 	UpdateData(true);
 	if(m_AlgRNG==_T(""))
@@ -205,7 +205,7 @@ void NistTest::StartProcess()
 {
 	option = 0;
 	mode = 0;
-	streamFile = "Component/Evaluation/RNG.txt"; //随机数存放文件路径
+	streamFile = "experiments/RNG.txt"; //随机数存放文件路径
 	openOutputStreams(option);
 	invokeTestSuite(option,streamFile,mode);
 	fclose(freqfp);
@@ -248,7 +248,7 @@ void NistTest::OnBnClickedShowResult()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	char freqfn[200];
-	sprintf(freqfn,"notepad.exe Component/Evaluation/experiments/%s/finalAnalysisReport.txt",generatorDir[option]);
+	sprintf(freqfn,"notepad.exe experiments/%s/finalAnalysisReport.txt",generatorDir[option]);
 	::WinExec(freqfn,SW_SHOW);
 }
 
