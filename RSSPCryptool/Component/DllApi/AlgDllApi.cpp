@@ -293,6 +293,8 @@ byte * AlgMng::RunCipher(int seed,int size){
 /***********************全局唯一DllMng对象定义*************************/
 DllMng dllMng;
 
+
+/***********************类型无损转换函数*************************/
 void ByteToBit(byte ByteData,int BitData[])
 {
 	byte temp = ByteData;
@@ -302,7 +304,20 @@ void ByteToBit(byte ByteData,int BitData[])
 		temp = temp / 2 ;
 	}
 }
+//CString的内容复制到byte类型的数组中(注意是强行转化，而不是显示16进制数字)
+byte * CString2Byte(CString str){
+	int len = str.GetAllocLength();
+	byte *buff = (byte *)str.GetBuffer();
+	byte * result = new byte[len];
+	memcpy(result,buff,len);
+	str.ReleaseBuffer();
+	return result;
+}
+CString Byte2CString(byte *arr,int len){
+	return CString((char *)arr,len);
+}
 
+/***********************测试所用的主函数*************************/
 int _tmain(int argc, _TCHAR* argv[])
 {
 	char text[16] = {'1','2','3','4','5','6','7','8','9','0','1','2','3','4','5','6'};
@@ -362,7 +377,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout<<endl;
 
 	mng.SetCurrCfg(CURR_MODE,"CFB");
+
+	//格式转换问题
+	CString test_str = "test";
+	cout<<test_str<<"--"<<Byte2CString(CString2Byte(test_str),test_str.GetAllocLength())<<endl;
 	system("pause");
 	return 0;
-
 }

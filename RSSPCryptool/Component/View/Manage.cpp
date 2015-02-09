@@ -84,72 +84,72 @@ void Manage::showAlgInfoLst(int type){
 	Cipher * alg;
 	switch(type){
 	case BLOCK:
-		lst_AlgInfo.InsertColumn(2,_T("密钥长度"),LVCFMT_CENTER,rect.Width()*4/36,0);
-		lst_AlgInfo.InsertColumn(3,_T("分组长度"),LVCFMT_CENTER,rect.Width()*4/36,0);
+		lst_AlgInfo.InsertColumn(2,_T("密钥长度/bit"),LVCFMT_CENTER,rect.Width()*5/36,0);
+		lst_AlgInfo.InsertColumn(3,_T("分组长度/bit"),LVCFMT_CENTER,rect.Width()*5/36,0);
 		for(int i = 0;i < mng->info->GetSize();i++){
 			alg = mng->info->GetAt(i);
 			if(alg->AlgType == BLOCK){
 				lst_AlgInfo.InsertItem(row,NULL);
 				lst_AlgInfo.SetItemText(row,0,"分组密码算法");
 				lst_AlgInfo.SetItemText(row,1,alg->AlgName);
-				lst_AlgInfo.SetItemText(row,2,int2CString(alg->key_len));
-				lst_AlgInfo.SetItemText(row,3,int2CString(alg->block_size));
+				lst_AlgInfo.SetItemText(row,2,int2CString(8*alg->key_len));
+				lst_AlgInfo.SetItemText(row,3,int2CString(8*alg->block_size));
 				row++;
 			}
 		}
 		break;
 	case STREAM:
-		lst_AlgInfo.InsertColumn(2,_T("密钥长度"),LVCFMT_CENTER,rect.Width()*4/36,0);
-		lst_AlgInfo.InsertColumn(3,_T("初始向量长度"),LVCFMT_CENTER,rect.Width()*6/36,0);
+		lst_AlgInfo.InsertColumn(2,_T("密钥长度/bit"),LVCFMT_CENTER,rect.Width()*5/36,0);
+		lst_AlgInfo.InsertColumn(3,_T("初始向量长度/bit"),LVCFMT_CENTER,rect.Width()*7/36,0);
 		for(int i = 0;i < mng->info->GetSize();i++){
 			alg = mng->info->GetAt(i);
 			if(alg->AlgType == STREAM){
 				lst_AlgInfo.InsertItem(row,NULL);
 				lst_AlgInfo.SetItemText(row,0,"流密码算法");
 				lst_AlgInfo.SetItemText(row,1,alg->AlgName);
-				lst_AlgInfo.SetItemText(row,2,int2CString(alg->key_len));
-				lst_AlgInfo.SetItemText(row,3,int2CString(alg->iv_len));
+				lst_AlgInfo.SetItemText(row,2,int2CString(8*alg->key_len));
+				lst_AlgInfo.SetItemText(row,3,int2CString(8*alg->iv_len));
 				row++;
 			}
 		}
 		break;
 	case HASH:
-		lst_AlgInfo.InsertColumn(2,_T("摘要长度"),LVCFMT_CENTER,rect.Width()*4/36, 0);
+		lst_AlgInfo.InsertColumn(2,_T("摘要长度/bit"),LVCFMT_CENTER,rect.Width()*5/36, 0);
 		for(int i = 0;i < mng->info->GetSize();i++){
 			alg = mng->info->GetAt(i);
 			if(alg->AlgType == HASH){
 				lst_AlgInfo.InsertItem(row,NULL);
 				lst_AlgInfo.SetItemText(row,0,"HASH算法");
 				lst_AlgInfo.SetItemText(row,1,alg->AlgName);
-				lst_AlgInfo.SetItemText(row,2,int2CString(alg->output_len));
+				lst_AlgInfo.SetItemText(row,2,int2CString(8*alg->output_len));
 				row++;
 			}
 		}
 		break;
 	case MAC:
-		lst_AlgInfo.InsertColumn(2,_T("密钥长度"),LVCFMT_CENTER,rect.Width()*4/36,0);
-		lst_AlgInfo.InsertColumn(3,_T("消息认证码长度"),LVCFMT_CENTER,rect.Width()*7/36,0);
+		lst_AlgInfo.InsertColumn(2,_T("密钥长度/bit"),LVCFMT_CENTER,rect.Width()*5/36,0);
+		lst_AlgInfo.InsertColumn(3,_T("消息认证码长度/bit"),LVCFMT_CENTER,rect.Width()*8/36,0);
 		for(int i = 0;i < mng->info->GetSize();i++){
 			alg = mng->info->GetAt(i);
 			if(alg->AlgType == MAC){
 				lst_AlgInfo.InsertItem(row,NULL);
 				lst_AlgInfo.SetItemText(row,0,"MAC算法");
 				lst_AlgInfo.SetItemText(row,1,alg->AlgName);
-				lst_AlgInfo.SetItemText(row,2,int2CString(alg->key_len));
-				lst_AlgInfo.SetItemText(row,3,int2CString(alg->output_len));
+				lst_AlgInfo.SetItemText(row,2,int2CString(8*alg->key_len));
+				lst_AlgInfo.SetItemText(row,3,int2CString(8*alg->output_len));
 				row++;
 			}
 		}
 		break;
 	case RNG:
-		lst_AlgInfo.InsertColumn(2,_T("种子长度"),LVCFMT_CENTER,rect.Width()*4/36, 0);
+		lst_AlgInfo.InsertColumn(2,_T("种子长度/bit"),LVCFMT_CENTER,rect.Width()*5/36, 0);
 		for(int i = 0;i < mng->info->GetSize();i++){
 			alg = mng->info->GetAt(i);
 			if(alg->AlgType == RNG){
 				lst_AlgInfo.InsertItem(row,NULL);
 				lst_AlgInfo.SetItemText(row,0,"随机数生成器");
 				lst_AlgInfo.SetItemText(row,1,alg->AlgName);
-				lst_AlgInfo.SetItemText(row,2,int2CString(alg->seed_len));
+				lst_AlgInfo.SetItemText(row,2,int2CString(8*alg->seed_len));
 				row++;
 			}
 		}
@@ -179,7 +179,6 @@ CString Manage::int2CString(int num){
 	CString str;
 	str.Format("%d",num);
 	return str;
-
 }
 
 // Manage 对话框

@@ -124,3 +124,7 @@ public:
 
 /***********************全局唯一DllMng对象声明*************************/
 extern DllMng dllMng;
+
+//类型转换函数
+byte * CString2Byte(CString str);
+CString Byte2CString(byte *arr,int len);

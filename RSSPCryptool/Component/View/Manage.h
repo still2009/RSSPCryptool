@@ -39,9 +39,9 @@ public:
 	void showCurInfo();
 	void showAlgInfoLst(int type);
 
-	int modeStr2Int(CString strMode);
-	int typeStr2Int(CString strType);
-	CString int2CString(int num);
+	static int modeStr2Int(CString strMode);
+	static int typeStr2Int(CString strType);
+	static CString int2CString(int num);
 
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedBtnSwitch();
